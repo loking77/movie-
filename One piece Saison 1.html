@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece Saisons 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Styles globaux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles pour le bannière du héros */
+        #heroBanner {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 12px;
+            border: 5px solid darkgreen;
+            border-radius: 10px;
+            background-color: darkred;
+            width: 250px;
+        }
+
+        #heroBanner img {
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        #heroBanner h1 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+
+        /* Styles pour la sélection d'épisodes et de versions */
+        #video-container {
+            text-align: center;
+        }
+
+        #episode-bar {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #description {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="heroBanner">
+        <img src="Images/one piece.jpg" alt="My Hero Academia Poster">
+        <h1>One Piece</h1>
+        <!-- Ajoutez d'autres éléments décoratifs ou des informations supplémentaires ici -->
+    </div>
+
+    <div style="margin-top: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+        <label for="selectEpisode" style="margin-bottom: 5px;">Choisir un épisode:</label>
+        <select id="selectEpisode" onchange="changerEpisodeViaSelect()" style="padding: 5px; font-size: 16px;">
+            <!-- Ajoutez vos options pour les épisodes ici -->
+            <option value="0">Épisode 1</option>
+            <option value="1">Épisode 2</option>
+            <option value="2">Épisode 3</option>
+			<option value="3">Épisode 4</option>
+            <option value="4">Épisode 5</option>
+            <option value="5">Épisode 6</option>
+			<option value="6">Épisode 7</option>
+			<option value="7">Épisode 8</option>
+            <!-- ... -->
+        </select>
+
+        <label for="selectVersion">Choisir la version:</label>
+        <select id="selectVersion" onchange="changerVersion()" style="margin-left: 10px; padding: 8px; background-color: #8B4513; color: white;">
+            <!-- Ajoutez vos options pour les versions ici -->
+            <option value="VF">Version Française</option>
+            <option value="VO">Version VOSTFR</option>
+        </select>
+    </div>
+
+    <div id="video-container">
+        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+        <!-- Boutons pour changer les épisodes -->
+		
+		
+	<style>
+    /* Ajoutez du style CSS pour le bouton */
+    .accueil-btn {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style
+
+    <!-- Le reste de votre code HTML ici -->
+
+    <!-- Lien vers l'accueil -->
+    <a href="https://flix-box-vf.netlify.app/Séries.html" class="accueil-btn">Accueil</a>
+
+    <!-- Le reste du contenu de votre page -->
+
+        <button onclick="episodePrecedent()">Épisode Précédent</button>
+        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+        <!-- Description de l'épisode -->
+        <div id="description">
+            <h3 style="color: #4CAF50;">Description de l'épisode</h3>
+            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+        </div>
+    </div>
+	
+	
+</body>
+</html>
+
+    <script>
+        var episodes = [
+            { linkVF: "https://app.videas.fr/embed/media/06275433-1195-4d81-a335-b55890067a8d/?logo=false&info=true&thumbnail=video", descriptionVF: " À l'aube d'une grande aventure: À la dérive sur un bateau qui coule, l'insouciant Luffy veut localiser le trésor perdu du roi des pirates. Mais d'abord, il lui faut un équipage, un navire et une carte.", linkVO: "https://app.videas.fr/embed/media/941f5265-56a9-4e37-9289-d7c0116cc2ef/?logo=false&info=true&thumbnail=video", descriptionVO: "À l'aube d'une grande aventure:  À la dérive sur un bateau qui coule, l'insouciant Luffy veut localiser le trésor perdu du roi des pirates. Mais d'abord, il lui faut un équipage, un navire et une carte." },
+            { linkVF: "https://app.videas.fr/embed/media/45cbbf05-5d6a-4931-bd56-72db1b38e7c1/?logo=false&info=true&thumbnail=video", descriptionVF: "L'homme au chapeau de paille: Après avoir trouvé une carte de Grand Line, Luffy, Nami et Zoro deviennent les otages d'un clown pas drôle. Kobby, désormais cadet, est piégé par le vice-amiral Garp.", linkVO: "https://app.videas.fr/embed/media/45bed4c0-08dd-451a-b0dc-ac41a6c385ff/?logo=false&info=true&thumbnail=video", descriptionVO: "L'homme au chapeau de paille: Après avoir trouvé une carte de Grand Line, Luffy, Nami et Zoro deviennent les otages d'un clown pas drôle. Kobby, désormais cadet, est piégé par le vice-amiral Garp." },
+            { linkVF: "https://app.videas.fr/embed/media/be24df79-98d7-4155-a3d4-1aa6e833372b/?logo=false&info=true&thumbnail=video", descriptionVF: "Pas d'histoires: À la recherche d'un navire digne de ce nom, la bande arrive au village de Sirop et rencontre le joyeux Usopp et sa meilleure amie Kaya. Mais un sinistre danger menace…", linkVO: "https://app.videas.fr/embed/media/4dbbafa2-54e8-49e2-85c6-1cd958445ec3/?logo=false&info=true&thumbnail=video", descriptionVO: "Pas d'histoires: À la recherche d'un navire digne de ce nom, la bande arrive au village de Sirop et rencontre le joyeux Usopp et sa meilleure amie Kaya. Mais un sinistre danger menace" },
+            { linkVF: "https://app.videas.fr/embed/media/b2dcc675-10f5-4384-bdfb-9c45824b9f57/?logo=false&info=true&thumbnail=video", descriptionVF: "Pirates droit devant !: Alors que ses amis sont en péril aux mains du majordome Klahadoll, Usopp demande de l'aide aux soldats de la Marine. Un combat au sabre s'ensuit dans la demeure de Kaya.", linkVO: "https://app.videas.fr/embed/media/386a3a81-2015-408e-be47-7a0a9bdd82d4/?logo=false&info=true&thumbnail=video", descriptionVO: "Pirates droit devant !: Alors que ses amis sont en péril aux mains du majordome Klahadoll, Usopp demande de l'aide aux soldats de la Marine. Un combat au sabre s'ensuit dans la demeure de Kaya." },
+			{ linkVF: "https://app.videas.fr/embed/media/a0662ebe-f211-4ce8-a753-547813f36e91/?logo=false&info=true&thumbnail=video", descriptionVF: "Un dîner au Baratie: Les Chapeaux de paille affrontent leur premier adversaire commun. Sur un restaurant flottant, Luffy se lie avec un cuisinier et Zoro croise le fer avec un flibustier.", linkVO: "https://app.videas.fr/embed/media/b39131a8-5ee1-40d7-b9cd-a0f3a0dbbce1/?logo=false&info=true&thumbnail=video", descriptionVO: "Un dîner au Baratie: Les Chapeaux de paille affrontent leur premier adversaire commun. Sur un restaurant flottant, Luffy se lie avec un cuisinier et Zoro croise le fer avec un flibustier." },
+            { linkVF: "https://app.videas.fr/embed/media/f944ebcf-39b3-453f-9949-48ab03b30618/?logo=false&info=true&thumbnail=video", descriptionVF: "Le chef et le plongeur: Sanji et Zeff, le chef du Baratie, oublient leurs différends pour sauver Zoro qui est gravement blessé. Un homme-poisson sans pitié donne du fil à retordre à l'équipage.", linkVO: "https://app.videas.fr/embed/media/65e170d1-afc7-4289-bd80-750a404456fc/?logo=false&info=true&thumbnail=video", descriptionVO: "Le chef et le plongeur: Sanji et Zeff, le chef du Baratie, oublient leurs différends pour sauver Zoro qui est gravement blessé. Un homme-poisson sans pitié donne du fil à retordre à l'équipage." },
+			{ linkVF: "https://app.videas.fr/embed/media/2d345efe-707e-4944-ab43-2f5e534486eb/?logo=false&info=true&thumbnail=video", descriptionVF: "La fille au tatouage de poisson-scie: Après s'être entendus avec un ennemi pour trouver Arlong, Luffy et sa bande mettent les voiles pour le village de Cocoyashi où ils découvrent le passé mystérieux de Nami.", linkVO: "https://app.videas.fr/embed/media/d2474a23-9ad5-46d0-b2a1-6888d23aee17/?logo=false&info=true&thumbnail=video", descriptionVO: "La fille au tatouage de poisson-scie: Après s'être entendus avec un ennemi pour trouver Arlong, Luffy et sa bande mettent les voiles pour le village de Cocoyashi où ils découvrent le passé mystérieux de Nami." },
+            { linkVF: "https://app.videas.fr/embed/media/fdf3a4db-5038-4db4-af48-2390eedc2bfe/?logo=false&info=true&thumbnail=video", descriptionVF: "Le plus grand bandit d'East Blue: Les Chapeaux de paille font tout pour mettre Arlong et les hommes-poissons hors d'état de nuire. Après une réunion de famille tendue, Luffy est près de toucher son rêve.", linkVO: "https://app.videas.fr/embed/media/1c5e18db-d86f-4ea4-95c2-643a2e2ca5c3/?logo=false&info=true&thumbnail=video", descriptionVO: "Le plus grand bandit d'East Blue: Les Chapeaux de paille font tout pour mettre Arlong et les hommes-poissons hors d'état de nuire. Après une réunion de famille tendue, Luffy est près de toucher son rêve." },
+            // Ajoutez les autres épisodes en français et en version originale
+        ];
+
+        var numeroEpisode = 0;
+        var versionActuelle = "VF"; // Variable pour suivre la version actuelle
+
+        function changerEpisodeViaSelect() {
+            var select = document.getElementById("selectEpisode");
+            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+
+            // Mettez à jour l'étiquette de l'épisode
+            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+            // Mettez à jour la description de l'épisode en fonction de la version
+            var descriptionKey = "description" + versionActuelle;
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerVersion() {
+            // Change la version actuelle
+            versionActuelle = document.getElementById("selectVersion").value;
+
+            // Met à jour la source vidéo et la description en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            var descriptionKey = "description" + versionActuelle;
+
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerEpisode() {
+            // Mettez à jour l'épisode en fonction de la position de la barre de progression
+            var bar = document.getElementById("episode-bar");
+            var progress = bar.value;
+            var totalEpisodes = episodes.length;
+
+            numeroEpisode = Math.floor((progress / 100) * totalEpisodes);
+            changerEpisodeViaSelect();
+        }
+
+		
+		function episodeSuivant() {
+            if (numeroEpisode < episodes.length - 1) {
+                numeroEpisode++;
+                changerEpisodeViaSelect();
+				
+				 } else {
+                // Vous avez atteint le dernier épisode, vous pouvez ajouter une logique supplémentaire ici
+                alert("Vous avez atteint le dernier épisode.");
+				
+            }
+        }
+
+        function episodePrecedent() {
+            if (numeroEpisode > 0) {
+                numeroEpisode--;
+                changerEpisodeViaSelect();
+			
+			} else {
+                // Vous êtes déjà au premier épisode
+                alert("Vous êtes déjà au premier épisode.");
+			
+            }
+        }
+
+       
+    </script>
+</body>
+</html>

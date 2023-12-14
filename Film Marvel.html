@@ -1,0 +1,476 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8f8f8; /* Couleur de fond générale */
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #0000ff; /* Couleur bleue */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 3;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar input[type="text"] {
+            float: right;
+            padding: 10px;
+            border: 2px solid #007BFF; /* Bordure de 2px épaisse - Bleu */
+            border-radius: 10px; /* Coins arrondis */
+            outline: none; /* Supprimez la bordure de focus par défaut */
+            font-size: 16px; /* Taille de la police */
+            margin-top: 14px;
+            margin-right: 16px;
+        }
+
+        .section {
+            margin: 1px;
+            padding: 2px;
+            background-color: lightblue;
+            cursor: pointer;
+            float: left;
+            width: 100%; /* Ajuster la largeur selon le nombre de sections */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 255, 0.6); /* Couleur bleue avec transparence */
+            z-index: 2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-30%, -50%);
+            padding: 3%;
+            width: 40%;
+            background-color: lightblue;
+            border: 5px solid green;
+            border-radius: 50px;
+            z-index: 3;
+        }
+
+        /* Styles pour la zone décorative de Contact et À propos de */
+        .decorative-zone {
+            background-color: white; /* Couleur de fond agréable */
+            padding: 20px;
+            border-radius: 50px; /* Bordure arrondie */
+            margin-top: 20px;
+        }
+
+        /* Styles pour la zone des boutons dans la page floue */
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white; /* Couleur bleue agréable compatible avec le fond */
+            padding: 5px;
+            border-radius: 10px; /* Bordure arrondie */
+            margin-top: 20px;
+            width: 50%; /* Ajuster la largeur de la zone des boutons */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styles pour chaque bouton dans la page floue */
+        .button-container a {
+            display: block;
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: white; /* Couleur bleue foncée agréable */
+            color: #000; /* Texte blanc */
+            text-decoration: none;
+            border-radius: 5px; /* Bordure arrondie */
+        }
+
+        /* Styles pour les boutons au survol dans la page floue */
+        .button-container a:hover {
+            background-color: #4a6ea9; /* Couleur bleue plus claire au survol */
+        }
+
+        . button-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #8b4513;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <title>Genre-Film Marvel</title>
+</head>
+
+<div class="navbar" id="navbar">
+    <a href="javascript:void(0)" onclick="showPage('Contact')">Contact</a>
+    <a href="javascript:void(0)" onclick="showPage('À propos de')">À propos de</a>
+    <a href="javascript:void(0)" onclick="showPage('Menu')">Menu</a>
+    <a href="javascript:void(0)"('Genre-Film Marvel')"><div class="Autres">Genre-Film Marvel</div></a>
+   
+			
+			
+			
+   
+   
+</div>
+
+<div class="section" id="menuSection">
+    <!-- Aucune zone décorative ici, seulement les boutons qui apparaîtront dans la page floue -->
+</div>
+
+<div class="overlay" id="overlay" onclick="hidePage()"></div>
+<div class="modal" id="modal">
+    <!-- Contenu de la page floue -->
+</div>
+
+<script>
+    window.onscroll = function() { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").style.top = "0";
+        } else {
+            document.getElementById("navbar").style.top = "-50px";
+        }
+    }
+
+    function showPage(pageName) {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal').style.display = 'block';
+
+        // Vous pouvez personnaliser le contenu de la page floue ici en fonction de la section cliquée
+        if (pageName === 'Contact') {
+            document.getElementById('modal').innerHTML = `
+                <h1>Contact</h1>
+                <p>
+                    <div class="section" id="contactSection">
+                        <div class="decorative-zone">
+                            <!-- Zone décorative pour la section Contact -->
+                            <u><h2>Bienvenue dans notre section de contact. N'hésitez pas à nous joindre pour toute question ou commentaire.</h2></u>
+                            <p>Nos coordonnées :</p>
+                            <ul>
+                                <li>Adresse : </li>
+                                <li>Téléphone : </li>
+                                <li>Email : </li>
+                            </ul>
+                        </div>
+                    </div>
+					</div>
+
+</p>
+        `;
+    } else if (pageName === 'À propos de') {
+        document.getElementById('modal').innerHTML = `
+            <h1>À propos de</h1>
+            <p>
+<div class="section" id="aboutSection">
+    <div class="decorative-zone">
+        <!-- Zone décorative pour la section À propos de -->
+        
+		
+		
+
+    </div>
+</div>
+</p>
+        `;
+    } else if (pageName === 'Menu') {
+        // Ajoutez ici vos zones de boutons pour la section "Menu"
+        document.getElementById('modal').innerHTML = `
+            <h1>Menu</h1>
+            <div class="menu-buttons">
+                <a href="https://flix-box-vf.netlify.app/index.html">Home</a>
+                <a href="https://flix-box-vf.netlify.app/Genre-Film%20Anime.html">Film Anime</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Disneyland.html">Film Disneyland</a>
+				
+				
+	
+            </div>
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/STUDIO%20DC%20COMICS-Film.html">Film DC Comics</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Marvel.html">Film Marvel</a>
+				<a href="https://flix-box-vf.netlify.app/Série%20Anime.html">Séries Animé</a>
+				
+                
+            </div>
+			
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/Science-Fiction.html">Science-Fiction</a>
+			    <a href="https://flix-box-vf.netlify.app/S%C3%A9ries.html">Séries</a>
+				<a href="https://flix-box-vf.netlify.app/Film%20Comédie.html">Film Comédie</a>
+
+               </div>
+			<br><br><br>
+            <div class="menu-buttons">
+			<a href="#">Séries D'horreurs</a>
+			<a href="https://flix-box-vf.netlify.app/Autres....html">Autres...</a>
+                
+            </div>
+        `;
+    }
+}
+   
+    function hidePage() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Genre-Film Marvel</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Votre contenu HTML -->
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+    <style>
+        /* Styles pour la section des films et séries */
+        .media-item {
+            margin: 12px;
+            padding: 10px;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: brown dark;
+            width: 250px;
+            float: right;
+        }
+        .media-item img {
+            max-width: 100%;
+            height: 40%;
+        }
+        .media-item h3 {
+            margin: 10px 0;
+        }
+        .media-item p {
+            font-size: 20px;
+        }
+        .media-item a {
+            display: block;
+            background-color: magenta;
+            color: brown;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .media-item a:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- ... Votre contenu HTML ... -->
+</body>
+</html>
+
+
+
+
+
+<br><br><br> <br><br
+			 
+			 
+			 
+			 
+	
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item"> <img src="Images/black window.jpg" alt="Black Window">
+                <h3>BLACK WIDOW</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Black%20Window.html">Regarder EN VF</a>
+            </div>
+      
+                </div>
+				
+  <div class="carousel-item"><div class="media-item">  <img src="Images/spider-man-homecoming.jpg" alt="Spider-Man-Homecoming">
+                <h3>Spider Man Homecoming</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Spider%20Man%20Homecoming.html">Regarder EN VF</a>
+         
+            </div>
+		</div>
+			
+			<div class="carousel-item"><div class="media-item"> <img src="Images/spider-man-no-way-home.jpg" alt="spider-man-no-way-home">
+                <h3>Spider Man No Way Home</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Spider-man-no-way-home.html">Regarder EN VF</a>
+            </div>
+</div>
+
+				
+  <div class="carousel-item"><div class="media-item">  <img src="Images/spider man 3.jpg" alt="spider man 3">
+                <h3>Spider-Man 3</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/Spider-Man%203.html">Regarder EN VF</a>
+            </div>
+		
+   </div>
+          
+							
+  <div class="carousel-item"><div class="media-item">  <img src="Images/avengers.jpg" alt="Avengers Infinity War">
+                <h3>Avengers: Infinity War</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Avengers%20Infinity%20War.html">Regarder EN VF</a>
+            </div>
+            </div>
+			
+		
+
+			
+			<div class="carousel-item"><div class="media-item"> <img src="Images/avengers end game.jpg" alt="Avengers End Game">
+                <h3>Avengers Endgame</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Avengers%20Endgame.html">Regarder EN VF</a>
+            </div>
+		
+
+                </div>
+				
+  <div class="carousel-item"><div class="media-item">  <img src="Images/civil war.jpg" alt="Captain America Civil War">
+                <h3>Captain America: Civil War</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Captain%20America%20Civil%20War.html">Regarder EN VF</a>
+            </div>
+		
+   
+            </div>
+			
+			
+			
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+    
+			 
+			 
+			 
+			 
+			
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+	

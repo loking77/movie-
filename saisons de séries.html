@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MY HERO ACADEMIA Saison 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Ajoutez du style CSS pour la liste déroulante */
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative;">
+        <div class="ombre3">
+            <div style="position: relative;">
+                <h2><p voici un <spam style="font-size:40px;">Description de la série:</spam></P></h2>
+                <div class="cadre">
+                    <h2 align="center"></h2>
+                    <h1>
+                        <p style="color:brown;line-height: 2; text-indent: 0px;"></p>
+                </div>
+                <br><br
+                <div class="ombre3">
+                    <h2><p voici un <spam style="font-size:40px;">Sinopsis:</spam></P></h2>
+                </div>
+                <div class="cadre">
+                    <h2 align="center"></h2>
+                    <h1>
+                        <p style="color:brown;line-height: 2; text-indent: 0px;"></p>
+                </div>
+                <p></p>        
+                <br><br>
+
+                <!-- Ajoutez la liste déroulante pour choisir l'épisode -->
+                <div>
+                    <label for="selectEpisode">Choisir un épisode:</label>
+                    <select id="selectEpisode" onchange="changerEpisodeViaSelect()">
+                        <option value="0">Épisode 1</option>
+                        <option value="1">Épisode 2</option>
+						<option value="2">Épisode 3</option>
+                        <option value="3">Épisode 4</option>
+						<option value="4">Épisode 5</option>
+                        <option value="5">Épisode 6</option>
+						<option value="6">Épisode 7</option>
+                        <option value="7">Épisode 8</option>
+						<option value="8">Épisode 9</option>
+                        <option value="9">Épisode 10</option>
+						<option value="10">Épisode 11</option>
+                        <option value="11">Épisode 12</option>
+						<option value="12">Épisode 13</option>
+                        <option value="13">Épisode 14</option>
+						<option value="14">Épisode 15</option>
+                        <option value="15">Épisode 16</option>
+						
+						
+						
+						
+						
+						
+                        <!-- Ajoutez d'autres options pour les épisodes suivants -->
+                    </select>
+                </div>
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Regarder une Série</title>
+                    <style>
+                        /* Style pour centrer la vidéo et la barre de progression */
+                        #video-container {
+                            text-align: center;
+                        }
+                        #episode-bar {
+                            width: 80%;
+                            margin: 20px auto;
+                        }
+                        #description {
+                            margin-top: 20px;
+                            background-color: #f5f5f5;
+                            padding: 10px;
+                            border-radius: 8px;
+                        }
+                        button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            margin: 5px;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                        }
+                        button:hover {
+                            background-color: #45a049;
+                        }
+                    </style>
+                </head>
+                <body>
+
+                    <div id="video-container">
+                        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+
+                        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+                        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+                        <button onclick="episodePrecedent()">Épisode Précédent</button>
+                        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+
+
+
+                        <div id="description">
+                            <h3 style="color: #4CAF50;">Description de l'épisode</h3>
+                            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+                        </div>
+                    </div>
+
+                    <script>
+                        var episodes = [
+                            { link: "", description: "<p1></p1> " },
+                            { link: "", description: "<p1></p1>" },
+                            { link: "", description: "<p1></p1>" },
+                            { link: "", description: "<p1></p1>" },
+                            { link: "", description: "<p1></p1>" },
+                            { link: "", description: "<p1></p1>" },
+                            // Ajoutez les liens pour les autres épisodes
+                        ];
+
+                        var numeroEpisode = 0;
+
+                        function changerEpisodeViaSelect() {
+                            var select = document.getElementById("selectEpisode");
+                            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+                            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné
+                            document.getElementById("serieVideo").src = episodes[numeroEpisode].link;
+
+                            // Mettez à jour l'étiquette de l'épisode
+                            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+                            // Mettez à jour la description de l'épisode
+                            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode].description;
+                        }
+
+                        // Le reste de votre script JavaScript ici...
+
+                        // Charger le premier épisode au chargement de la page
+                        window.onload = function() {
+                            episodeSuivant();
+                        };
+                    </script>
+                    <br><br><br>
+                </body>
+                </html>
+            </div>
+        </div>
+    </div>
+
+    <!-- Le reste de votre code HTML ici... -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

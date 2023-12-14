@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FLIX-BOX HTML</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Votre contenu HTML -->
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .sidebar {
+            height: 300vh;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #8B4513; /* Marron */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            color: white;
+			
+        }
+
+        .sidebar a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            margin-bottom: 15px; /* Ajout d'une marge entre les boutons */
+            background-color: #A0522D; /* Marron plus foncé */
+            border-radius: 5px; /* Coins arrondis */
+            width: 150px; /* Largeur fixe des boutons */
+            text-align: center; /* Centrer le texte dans le bouton */
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #996633; /* Couleur au survol */
+			
+        }
+
+        .menu-button {
+            font-size: 30px;
+            border: none;
+            padding: 10px;
+            background-color: #8B4513; /* Marron */
+            color: white;
+            cursor: pointer;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .menu-button:hover {
+            background-color: #A0522D; /* Marron plus foncé */
+        }
+
+        .main-content {
+            margin-left: 200px;
+            transition: margin-left 0.5s;
+
+        }
+
+        .sidebar-open .main-content {
+            margin-left: 450px;
+        }
+		
+		.sidebar {
+            width: 0;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right:100;
+            background-color: #8B4513; /* Marron */
+            overflow-x: hidden;
+            transition: 0.5s;
+            z-index: 2;
+        }
+
+        .main-content {
+            margin-right: 250px;
+            transition: margin-right 0.5s;
+        }
+
+        .menu-button {
+            float: left;
+            z-index: 3;
+        }
+		
+		
+		
+    </style>
+    <title>Barre Latérale</title>
+</head>
+<body>
+    <div class="sidebar">
+	    <a href="https://flix-box-vf.netlify.app/index.html">HOME</a>
+        <a href="https://flix-box-vf.netlify.app/Genre-Film%20Anime.html">Genre/Film Anime</a>
+        <a href="https://flix-box-vf.netlify.app/Film%20Disneyland.html">Films/Disneyland</a>
+        <a href="#">STUDIO DC COMICS/Film</a>
+        <a href="#">Séries/D'horreurs</a>
+        <a href="#">Film/Marvel</a>
+        <a href="#">Séries/D'Animé</a>
+        <a href="https://flix-box-vf.netlify.app/Autres....html">Autres...</a>
+        <a href="#">Science-Fiction</a>
+        <a href="#">Séries</a>
+        <a href="#">Page 10</a>
+		<a href="#">Page 9</a>
+        <a href="#">Page 10</a>
+		<a href="#">Page 9</a>
+        
+    </div>
+	
+    <button class="menu-button" onclick="toggleSidebar()">Menu</button>
+    <div class="main-content">
+        <!-- Contenu principal de la page -->
+    </div>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            var menuButton = document.querySelector('.menu-button');
+
+            sidebar.classList.toggle('sidebar-open');
+            sidebar.style.width = (sidebar.style.width === '250px') ? '0' : '250px';
+            menuButton.style.marginRight = (sidebar.style.width === '250px') ? '250px' : '0';
+        }
+
+        window.onclick = function (event) {
+            var sidebar = document.querySelector('.sidebar');
+            var menuButton = document.querySelector('.menu-button');
+
+            if (event.target !== sidebar && event.target !== menuButton) {
+                sidebar.style.width = '0';
+                menuButton.style.marginRight = '0';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+    <style>
+        /* Styles pour la section des films et séries */
+        .media-item {
+            margin: 12px;
+            padding: 10px;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: brown dark;
+            width: 250px;
+            float: right;
+        }
+        .media-item img {
+            max-width: 100%;
+            height: 40%;
+        }
+        .media-item h3 {
+            margin: 10px 0;
+        }
+        .media-item p {
+            font-size: 20px;
+        }
+        .media-item a {
+            display: block;
+            background-color: magenta;
+            color: brown;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .media-item a:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- ... Votre contenu HTML ... -->
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+</head>
+<body>
+    <header>
+        <h1><p voici un <spam style="font-size:50px;">Bienvenue sur "FLIX-BOX" Le Site de Streaming sans <u>PUBS</u></spam></p></h1>
+        <p voici un <spam style="font-size:30px;" style="color:green;"> <u> Regardez vos films et séries préférés en streaming en haute qualité.</u></spam></p>
+    </header>
+	
+<br><br><br><br><br>
+	
+	
+	
+	
+	
+	
+	
+	<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon Site Web</title>
+</head>
+<body>
+    <div style="position: relative;">
+        <img src="Images/flix box.PNG" alt="logo FLIX BOX" style="position: absolute; top: 0; left: 0;"   width="540" height="164"      >
+    </div>
+</body>
+</html>
+
+
+	
+	
+	<BR><B><BR><BR><B><BR><BR>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+    <style>
+        /* Styles pour la barre de recherche */
+        .search-bar {
+            float: right;
+            margin-top: 20px;
+        }
+        .search-bar input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .search-bar button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+	
+<br><br><br><br><br><br><br><br>
+
+    <main>
+        <section>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher...">
+                <button>Rechercher</button>
+            </div></section>
+			
+	<br><br><br><br><br><br><br><br><br>
+			
+			
+<main>
+
+<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;"> Dernières Sorties</spam></P></h2>
+			
+			
+			<div class="media-item">
+                <img src="Images/black clover.JPEG" alt="Black Clover Le Film">
+                <h3> Black Clover Le Film</h3>
+                <p>Description du Film 1</p>
+                <a href="https://flix-box-vf.netlify.app/Black%20Clover.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/flash.JPEG" alt="The Flash Le Film">
+                <h3>The Flash Le Film</h3>
+                <p>Description du Fim 2</p>
+                <a href="https://flix-box-vf.netlify.app/flash.html">Regarder EN VF</a>
+            </div>
+			
+			<div class="media-item">
+                <img src="Images/creed 3.JPEG" alt="Creed III Le Film">
+                <h3>Creed III Le Film</h3>
+                <p>Description du Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Creed%203.html">Regarder EN VF</a>
+            </div>
+            
+			
+		
+            <div class="media-item">
+                <img src="Images/blue.JPEG" alt="Blue Beetle Le Film">
+                <h3> Blue Beetle Le Film</h3>
+                <p>Description du Film 4</p>
+                <a href="https://flix-box-vf.netlify.app/blue%20beetles.html">Regarder EN VF</a>
+            </div>
+			
+			<div class="media-item">
+                <img src="Images/hoppen.JPEG" alt="Oppenheimer">
+                <h3>Oppenheimer</h3>
+                <p>Description du Film 5</p>
+                <a href="https://flix-box-vf.netlify.app/oppenheimer.html">Regarder EN VOSTFR</a>
+            </div>
+			
+			
+			<div class="media-item">
+                <img src="Images/creed2.JPEG" alt="Creed II">
+                <h3>Creed II</h3>
+                <p>Description du Film 6</p>
+                <a href="https://flix-box-vf.netlify.app/Creed%202.html">Regarder EN VF</a>
+            </div>
+			
+			
+			
+			
+			
+			
+			
+            <!-- Ajoutez ici des vignettes de films récemment ajoutés -->
+        </section>
+        
+			<br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+
+		<br><br><br><br><br><br><br><br><br><br>
+	
+	
+	
+	<br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br>
+
+	
+	
+	<hr>
+		<br><br><br>
+	
+	<hr>
+	
+	
+	
+	
+	
+	
+	<section>
+	<main>
+
+<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;">FILMS DISNEYLAND</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+      
+            <div class="media-item">
+                <img src="Images/cars.JPEG" alt="Cars">
+                <h3>Cars</h3>
+                <p>Description du Film 1</p>
+                <a href="https://flix-box-vf.netlify.app/Cars.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/Cars2.JPEG" alt="Cars 2">
+                <h3>Cars 2</h3>
+                <p>Description du Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/cars2.html">Regarder EN VF</a>
+            </div>
+			
+	
+            
+			<div class="media-item">
+                <img src="Images/cars3.JPEG" alt="Cars 3">
+                <h3>Cars 3</h3>
+                <p>Description du Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Cars%203.html">Regarder EN VF</a>
+            </div>
+            
+			
+			
+			<br><br><br><br>
+            <div class="media-item">
+                <img src="Images/monstreparis.JPEG" alt="Un Monstre à Paris">
+                <h3>Un Monstre à Paris</h3>
+                <p>Description du Film 4</p>
+                <a href="https://flix-box-vf.netlify.app/Un%20Monstre%20%C3%A0%20Paris.html">Regarder EN VF</a>
+            </div>
+			
+	 
+			<div class="media-item">
+                <img src="Images/mulan.JPEG" alt="Mulan">
+                <h3>Mulan</h3>
+                <p>Description du Film 5</p>
+                <a href="https://flix-box-vf.netlify.app/Mulan.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/rebelle.JPEG" alt="Rebelle">
+                <h3>Rebelle</h3>
+                <p>Description du Film 6</p>
+                <a href="https://flix-box-vf.netlify.app/Rebelle.html">Regarder EN VF</a>
+            </div>
+<br><br
+	
+			
+
+
+	<br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+
+		<br><br><br><br><br><br><br><br><br><br>
+	
+	
+	
+	<br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br>
+
+	
+	
+	<hr>
+		<br><br><br>
+	
+	<hr>
+	
+
+
+
+
+		<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;">GENRES/ FILMS ANIME</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+		
+		<div class="media-item">
+                <img src="Images/peabody.JPEG" alt="Mr peabody et sherman ">
+                <h3>Mr Peabody Et Sherman </h3>
+                <p>Description du Film 1</p>
+                <a href="https://flix-box-vf.netlify.app/M.%20Peabody%20et%20Sherman.html">Regarder EN VF</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/coco.JPEG" alt="COCO">
+                <h3>COCO</h3>
+                <p>Description du Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/coco.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/spiderman spider-verse.JPEG" alt="Spider-Man Across the Spider-Verse">
+                <h3>Spider-Man Across the Spider-Verse</h3>
+                <p>Description du Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Spider-Man%20Across%20the%20Spider-Verse.html">Regarder EN VF</a>
+            </div>
+			
+		<div class="media-item">
+                <img src="Images/mario bros .JPEG" alt="The Super Mario Bros Le Film">
+                <h3>The Super Mario Bros Le Film</h3>
+                <p>Description du Film 4</p>
+                <a href="https://flix-box-vf.netlify.app/The%20Super%20Mario%20Le%20Film.html">Regarder EN VF</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/five night.JPEG" alt="Five Nights At Freddy's Film">
+                <h3>five nights at freddy's film</h3>
+                <p>Description du Film 5</p>
+                <a href="https://flix-box-vf.netlify.app/Five%20Nights%20at%20Freddy's.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/démon slayer.JPEG" alt="Démon Slayer Le Film Le Train De L'Infini">
+                <h3>Démon Slayer Le Film: Le Train De L'Infini</h3>
+                <p>Description du Film 6</p>
+                <a href="https://flix-box-vf.netlify.app/D%C3%A9mon%20Slayer%20Le%20Film%20%20Le%20Train%20De%20L'Infini.html">Regarder EN VF</a>
+            </div>
+		
+		<br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+		<br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+					
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><b><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+
+		        
+		<hr>
+		<br><br><br>
+	
+	<hr>
+		
+		
+			<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;">STUDIO DC COMICS/Film</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+		
+		
+		
+		
+		<div class="media-item">
+                <img src="Images/shazam1.JPEG" alt="Shazam !">
+                <h3>Shazam !</h3>
+                <p>Description du Film 1</p>
+                <a href="https://flix-box-vf.netlify.app/shazam.html">Regarder EN VF</a>
+            </div>
+		
+		<div class="media-item">
+                <img src="Images/shazam.JPEG" alt="Shazam">
+                <h3>Shazam La Rage Des Dieux</h3>
+                <p>Description du Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/Shazam%20la%20rage%20des%20dieux.html">Regarder EN VF</a>
+            </div>
+            
+            
+            <div class="media-item">
+                <img src="serie1.jpg" alt="Nom de la Série 1">
+                <h3>Nom de la Série 1</h3>
+                <p>Description de la Série 1</p>
+                <a href="lien-vers-la-serie1">Regarder</a>
+            </div>
+		
+		<div class="media-item">
+                <img src="film1.jpg" alt="Nom du film 1">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 1</p>
+                <a href="lien-vers-le-film1">Regarder</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/.JPEG" alt="">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 7</p>
+                <a href="lien-vers-le-film1">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="serie1.jpg" alt="Nom de la Série 1">
+                <h3>Nom de la Série 1</h3>
+                <p>Description de la Série 1</p>
+                <a href="lien-vers-la-serie1">Regarder</a>
+            </div>
+		
+		<br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+					
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+
+		
+		        
+		<hr>
+		<br><br><br>
+	
+	<hr>
+			
+		<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;">Séries D'Horreurs</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+
+      <div class="media-item">
+                <img src="Images/mercredi.JPEG" alt="Wednesday">
+                <h3>Mercredi</h3>
+                <p>SAISON 1</p>
+                <a href="https://flix-box-vf.netlify.app/Mercredi.html">Regarder EN VF</a>
+            </div>
+		
+		<div class="media-item">
+                <img src="film1.jpg" alt="Nom du film 1">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 1</p>
+                <a href="lien-vers-le-film1">Regarder</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/.JPEG" alt="">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 7</p>
+                <a href="lien-vers-le-film1">Regarder EN VF</a>
+            </div>
+			
+			<div class="media-item">
+                <img src="serie1.jpg" alt="Nom de la Série 1">
+                <h3>Nom de la Série 1</h3>
+                <p>Description de la Série 1</p>
+                <a href="lien-vers-la-serie1">Regarder</a>
+            </div>
+		
+		<div class="media-item">
+                <img src="film1.jpg" alt="Nom du film 1">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 1</p>
+                <a href="lien-vers-le-film1">Regarder</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/.JPEG" alt="">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 7</p>
+                <a href="lien-vers-le-film1">Regarder EN VF</a>
+            </div>
+			
+	
+		<br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+					
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+
+		
+		
+		
+		
+		<div style="position: relative;">
+
+<h2><p voici un <spam style="font-size:40px;">Genres Populaires</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+
+      
+            <div class="media-item">
+                <img src="Images/creed.JPEG" alt="Creed - L'Héritage de Rocky Balboa - film">
+                <h3>Creed L'Héritage de Rocky Balboa - film</h3>
+                <p>Description du Film 1</p>
+                <a href="https://flix-box-vf.netlify.app/Creed.html">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="Images/alita.JPEG" alt="Alita">
+                <h3>Alita Angel Battle</h3>
+                <p>Description du Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/alita.html">Regarder EN VF</a>
+            </div>
+            
+			<div class="media-item">
+                <img src="Images/barbie.JPEG" alt="Barbie Le Film">
+                <h3>Barbie Le Film</h3>
+                <p>Description du Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Barbie%20le%20film.html">Regarder EN VF</a>
+            </div>
+			
+			
+			
+			<div class="media-item">
+                <img src="film1.jpg" alt="Nom du film 1">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 1</p>
+                <a href="lien-vers-le-film1">Regarder</a>
+            </div>
+            
+            
+			<div class="media-item">
+                <img src="Images/.JPEG" alt="">
+                <h3>Nom du Film 1</h3>
+                <p>Description du Film 7</p>
+                <a href="lien-vers-le-film1">Regarder EN VF</a>
+            </div>
+            
+            <div class="media-item">
+                <img src="serie1.jpg" alt="Nom de la Série 1">
+                <h3>Nom de la Série 1</h3>
+                <p>Description de la Série 1</p>
+                <a href="lien-vers-la-serie1">Regarder</a>
+            </div>
+			
+			
+			
+			
+			
+			
+			
+			
+            <!-- Ajoutez d'autres films et séries de la même manière -->
+        </section>
+        <section>
+		
+		
+		
+			
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		
+
+		
+			
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		
+
+		
+		
+		
+		
+
+		
+		
+		
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br>
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    <footer>
+        <p>&copy; 2023 Mon Site de Streaming. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

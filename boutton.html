@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ONE PIECE SAISONS 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #heroBanner {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+			margin: 12px;
+            padding: 10px;
+            border: 5px solid bleu;
+            border-radius: 10px;
+            text-align: center;
+            background-color: brown dark;
+            width: 250px;
+        }
+        #heroBanner img {
+            width: 150px; /* Ajustez la taille selon vos préférences */
+            border-radius: 10px; /* Ajoutez une bordure arrondie pour plus de style */
+        }
+        #heroBanner h1 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+        /* Ajoutez le reste du style CSS ci-dessous */
+        /* ... */
+		
+		
+		
+    </style>
+</head>
+<body>
+    <div id="heroBanner">
+        <img src="Images/one piece.jpg" alt="My Hero Academia Poster">
+        <h1>One Piece</h1>
+        <!-- Ajoutez d'autres éléments décoratifs ou des informations supplémentaires ici -->
+    </div>
+
+    <!-- Le reste de votre code HTML ici -->
+
+    <script>
+        // Votre script JavaScript ici
+        /* ... */
+    </script>
+</body>
+</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<style>
+	
+	
+	
+        /* Ajoutez du style CSS pour la liste déroulante et autres styles ici */
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+        /* Style pour centrer la vidéo et la barre de progression */
+        #video-container {
+            text-align: center;
+        }
+        #episode-bar {
+            width: 80%;
+            margin: 20px auto;
+        }
+        #description {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+    <style>
+        /* Styles pour la section des films et séries */
+        .media-item {
+            margin: 12px;
+            padding: 10px;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: brown dark;
+            width: 250px;
+            float: right;
+        }
+        .media-item img {
+            max-width: 100%;
+            height: 40%;
+        }
+        .media-item h3 {
+            margin: 10px 0;
+        }
+        .media-item p {
+            font-size: 20px;
+        }
+        .media-item a {
+            display: block;
+            background-color: magenta;
+            color: brown;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .media-item a:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+
+
+		
+
+
+
+
+
+<body>
+    <div style="margin-top: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+        <label for="selectEpisode" style="margin-bottom: 5px;">Choisir un épisode:</label>
+        <select id="selectEpisode" onchange="changerEpisodeViaSelect()" style="padding: 5px; font-size: 16px;">
+            <option value="0">Épisode 1</option>
+            <option value="1">Épisode 2</option>
+            <option value="2">Épisode 3</option>
+            <option value="3">Épisode 4</option>
+            <!-- Ajoutez d'autres options pour les épisodes suivants -->
+        </select>
+
+        <label for="selectVersion">Choisir la version:</label>
+        <select id="selectVersion" onchange="changerVersion()" style="margin-left: 10px; padding: 8px; background-color: #8B4513; color: white;">
+            <option value="VF">Version Française</option>
+            <option value="VO">Version VOSTFR</option>
+        </select>
+    </div>
+
+    <div id="video-container">
+        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+
+        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One piece série Netfflix</title>
+  <style>
+    /* Ajoutez du style CSS pour le bouton */
+    .accueil-btn {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ajoutez le bouton avec un lien vers l'accueil -->
+  <a href="https://flix-box-vf.netlify.app/index.html" class="accueil-btn">Accueil</a>
+
+  <!-- Le reste du contenu de votre page -->
+
+</body>
+</html>
+
+
+        <button onclick="episodePrecedent()">Épisode Précédent</button>
+        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+        <div id="description">
+            <h3 style="color: #4CAF50;">Description de l'épisode</h3>
+            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+        </div>
+    </div><br>
+
+    <script>
+        var episodes = [
+            { linkVF: "https://app.videas.fr/embed/media/06275433-1195-4d81-a335-b55890067a8d/?logo=false&info=true&thumbnail=video", descriptionVF: " À l'aube d'une grande aventure: À la dérive sur un bateau qui coule, l'insouciant Luffy veut localiser le trésor perdu du roi des pirates. Mais d'abord, il lui faut un équipage, un navire et une carte.", linkVO: "https://app.videas.fr/embed/media/9416209f-dd55-4112-a4dd-d63cd1ff52c2/", descriptionVO: "À l'aube d'une grande aventure:  À la dérive sur un bateau qui coule, l'insouciant Luffy veut localiser le trésor perdu du roi des pirates. Mais d'abord, il lui faut un équipage, un navire et une carte." },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+            // Ajoutez les autres épisodes en français et en version originale
+        ];
+
+        var numeroEpisode = 0;
+        var versionActuelle = "VF"; // Variable pour suivre la version actuelle
+
+        function changerEpisodeViaSelect() {
+            var select = document.getElementById("selectEpisode");
+            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+
+            // Mettez à jour l'étiquette de l'épisode
+            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+            // Mettez à jour la description de l'épisode en fonction de la version
+            var descriptionKey = "description" + versionActuelle;
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerVersion() {
+            // Change la version actuelle
+            versionActuelle = document.getElementById("selectVersion").value;
+
+            // Met à jour la source vidéo et la description en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            var descriptionKey = "description" + versionActuelle;
+
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerEpisode() {
+            // Mettez à jour l'épisode en fonction de la position de la barre de progression
+            var bar = document.getElementById("episode-bar");
+            var progress = bar.value;
+            var totalEpisodes = episodes.length;
+
+            numeroEpisode = Math.floor((progress / 100) * totalEpisodes);
+            changerEpisodeViaSelect();
+        }
+
+        function sauterEpisode(event) {
+            // Empêche la propagation de l'événement click lors du déplacement de la barre de progression
+            event.stopPropagation();
+        }
+
+        function episodePrecedent() {
+            if (numeroEpisode > 1) {
+                numeroEpisode--;
+                changerEpisodeViaSelect();
+            }
+        }
+
+        function episodeSuivant() {
+            if (numeroEpisode < episodes.length - 1) {
+                numeroEpisode++;
+                changerEpisodeViaSelect();
+            }
+        }
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNK Saisons 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Styles globaux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles pour le bannière du héros */
+        #heroBanner {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 12px;
+            border: 5px solid darkgreen;
+            border-radius: 10px;
+            background-color: darkred;
+            width: 250px;
+        }
+
+        #heroBanner img {
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        #heroBanner h1 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+
+        /* Styles pour la sélection d'épisodes et de versions */
+        #video-container {
+            text-align: center;
+        }
+
+        #episode-bar {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #description {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="heroBanner">
+        <img src="Images/one piece.jpg" alt="My Hero Academia Poster">
+        <h1>One Piece</h1>
+        <!-- Ajoutez d'autres éléments décoratifs ou des informations supplémentaires ici -->
+    </div>
+
+    <div style="margin-top: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+        <label for="selectEpisode" style="margin-bottom: 5px;">Choisir un épisode:</label>
+        <select id="selectEpisode" onchange="changerEpisodeViaSelect()" style="padding: 5px; font-size: 16px;">
+            <!-- Ajoutez vos options pour les épisodes ici -->
+            <option value="0">Épisode 1</option>
+            <option value="1">Épisode 2</option>
+            <option value="2">Épisode 3</option>
+			<option value="3">Épisode 4</option>
+            <option value="4">Épisode 5</option>
+            <option value="5">Épisode 6</option>
+			<option value="6">Épisode 7</option>
+			<option value="7">Épisode 8</option>
+			<option value="8">Épisode 9</option>
+            <option value="9">Épisode 10</option>
+            <option value="10">Épisode 11</option>
+			<option value="11">Épisode 12</option>
+            <option value="12">Épisode 13</option>
+            <option value="13">Épisode 14</option>
+			<option value="14">Épisode 15</option>
+			<option value="15">Épisode 16</option>
+			<option value="16">Épisode 17</option>
+            <option value="17">Épisode 18</option>
+            <option value="18">Épisode 19</option>
+			<option value="19">Épisode 20</option>
+            <option value="20">Épisode 21</option>
+            <option value="21">Épisode 22</option>
+			<option value="22">Épisode 23</option>
+			<option value="23">Épisode 24</option>
+			<option value="14">Épisode 25</option>
+            <!-- ... -->
+        </select>
+
+        <label for="selectVersion">Choisir la version:</label>
+        <select id="selectVersion" onchange="changerVersion()" style="margin-left: 10px; padding: 8px; background-color: #8B4513; color: white;">
+            <!-- Ajoutez vos options pour les versions ici -->
+            <option value="VF">Version Française</option>
+            <option value="VO">Version VOSTFR</option>
+        </select>
+    </div>
+
+    <div id="video-container">
+        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+        <!-- Boutons pour changer les épisodes -->
+		
+		
+	<style>
+    /* Ajoutez du style CSS pour le bouton */
+    .accueil-btn {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style
+
+    <!-- Le reste de votre code HTML ici -->
+
+    <!-- Lien vers l'accueil -->
+    <a href="https://flix-box-vf.netlify.app/Séries.html" class="accueil-btn">Accueil</a>
+
+    <!-- Le reste du contenu de votre page -->
+
+        <button onclick="episodePrecedent()">Épisode Précédent</button>
+        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+        <!-- Description de l'épisode -->
+        <div id="description">
+            <h3 style="color: #4CAF50;">Description de l'épisode</h3>
+            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+        </div>
+    </div>
+	
+	
+</body>
+</html>
+
+  <script>
+			{ linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+		    { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+			{ linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+		    { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+			{ linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+		    { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+			{ linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+		    { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+			{ linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+		    { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 2 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 2 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 3 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 3 VO" },
+            { linkVF: "lien_integration_VF", descriptionVF: "Description de l'épisode 4 VF", linkVO: "lien_integration_VO", descriptionVO: "Description de l'épisode 4 VO" },
+            // Ajoutez les autres épisodes en français et en version originale
+						
+						
+						{ linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+			{ linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+		    { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+            { linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+			{ linkVF: "lien_integration_VF", linkVO: "lien_integration_VO" },
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+        var numeroEpisode = 0;
+        var versionActuelle = "VF"; // Variable pour suivre la version actuelle
+
+        function changerEpisodeViaSelect() {
+            var select = document.getElementById("selectEpisode");
+            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+
+            // Mettez à jour l'étiquette de l'épisode
+            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+            // Mettez à jour la description de l'épisode en fonction de la version
+            var descriptionKey = "description" + versionActuelle;
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerVersion() {
+            // Change la version actuelle
+            versionActuelle = document.getElementById("selectVersion").value;
+
+            // Met à jour la source vidéo et la description en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            var descriptionKey = "description" + versionActuelle;
+
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerEpisode() {
+            // Mettez à jour l'épisode en fonction de la position de la barre de progression
+            var bar = document.getElementById("episode-bar");
+            var progress = bar.value;
+            var totalEpisodes = episodes.length;
+
+            numeroEpisode = Math.floor((progress / 100) * totalEpisodes);
+            changerEpisodeViaSelect();
+        }
+
+		
+		function episodeSuivant() {
+            if (numeroEpisode < episodes.length - 1) {
+                numeroEpisode++;
+                changerEpisodeViaSelect();
+				
+            }
+        }
+
+        function episodePrecedent() {
+            if (numeroEpisode > 0) {
+                numeroEpisode--;
+                changerEpisodeViaSelect();
+            }
+        }
+
+       
+    </script>
+</body>
+</html>
+						
+						
+						
+						
+
+

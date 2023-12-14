@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNK Saisons 2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Styles globaux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles pour le bannière du héros */
+        #heroBanner {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 12px;
+            border: 5px solid darkgreen;
+            border-radius: 10px;
+            background-color: darkred;
+            width: 250px;
+        }
+
+        #heroBanner img {
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        #heroBanner h1 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+
+        /* Styles pour la sélection d'épisodes et de versions */
+        #video-container {
+            text-align: center;
+        }
+
+        #episode-bar {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #description {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="heroBanner">
+        <img src="Images/snk 2.jpg" alt="SNK Poster">
+        <h1>Attaque Des Titans:<br> 12 épisodes Disponibles</h1>
+        <!-- Ajoutez d'autres éléments décoratifs ou des informations supplémentaires ici -->
+    </div>
+
+    <div style="margin-top: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+        <label for="selectEpisode" style="margin-bottom: 5px;">Choisir un épisode:</label>
+        <select id="selectEpisode" onchange="changerEpisodeViaSelect()" style="padding: 5px; font-size: 16px;">
+            <!-- Ajoutez vos options pour les épisodes ici -->
+            <option value="0">Épisode 1</option>
+            <option value="1">Épisode 2</option>
+            <option value="2">Épisode 3</option>
+			<option value="3">Épisode 4</option>
+            <option value="4">Épisode 5</option>
+            <option value="5">Épisode 6</option>
+			<option value="6">Épisode 7</option>
+			<option value="7">Épisode 8</option>
+			<option value="8">Épisode 9</option>
+            <option value="9">Épisode 10</option>
+            <option value="10">Épisode 11</option>
+			<option value="11">Épisode 12</option>
+           
+            <!-- ... -->
+        </select>
+
+        <label for="selectVersion">Choisir la version:</label>
+        <select id="selectVersion" onchange="changerVersion()" style="margin-left: 10px; padding: 8px; background-color: #8B4513; color: white;">
+            <!-- Ajoutez vos options pour les versions ici -->
+            <option value="VF">Version Française</option>
+            <option value="VO">Version VOSTFR</option>
+        </select>
+    </div>
+
+    <div id="video-container">
+        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+        <!-- Boutons pour changer les épisodes -->
+		
+		
+	<style>
+    /* Ajoutez du style CSS pour le bouton */
+    .accueil-btn {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style
+
+    <!-- Le reste de votre code HTML ici -->
+
+    <!-- Lien vers l'accueil -->
+    <a href="https://flix-box-vf.netlify.app/Série%20Anime.html" class="accueil-btn">Accueil</a>
+
+    <!-- Le reste du contenu de votre page -->
+
+        <button onclick="episodePrecedent()">Épisode Précédent</button>
+        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+        <!-- Description de l'épisode -->
+        <div id="description">
+            <h3 style="color: #4CAF50;">Aucune Description de l'épisode</h3>
+            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+        </div>
+    </div>
+	
+	
+</body>
+</html>
+
+    <script>
+        var episodes = [
+			
+			{ linkVF: "https://app.videas.fr/embed/media/8552ead8-1115-4000-acf2-de1097e0a8b3/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/00e559ba-7ad4-4f69-9685-86a09266e1f8/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/844a9830-016f-42fd-a766-25f0afecfdf1/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/dfebf9b5-7081-4886-be27-4ed8eac2cdf1/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/128b7925-1413-4042-bc9d-bd8f6fbda3a4/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/a8e6d079-2a8e-4572-b4c2-a19c8747bf7d/?logo=false&info=true&thumbnail=video" },
+		    { linkVF: "https://app.videas.fr/embed/media/17b14c5d-5578-4e3e-9a5c-067c49665b70/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/e0293eba-bfa4-4eac-a762-4d18fd439db1/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/62f4ca68-0372-4551-a1ce-b1b287146251/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/b668fd26-9ac2-4f8c-95f1-1e525bf1fff1/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/e17abe02-2306-4ebe-b511-5ab3decbd14a/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/41fe2a92-b519-4218-bca3-22fd658f7b52/?logo=false&info=true&thumbnail=video" },
+			{ linkVF: "https://app.videas.fr/embed/media/978b5e8d-c37c-4fee-837d-be3b178aab3a/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/2487c934-c62f-4859-9292-937e565e249c/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/a95fbb57-30a6-496a-9bae-56b37d916203/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/a85ca0e0-5cb5-425f-b606-cc70de2900ca/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/fdefdc3a-d753-48a1-b21b-634d6bd62e61/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/87084927-e74c-404e-ab49-d25c2d34481c/?logo=false&info=true&thumbnail=video" },
+		    { linkVF: "https://app.videas.fr/embed/media/1796e981-cf47-41b1-b96f-f97d6e078c88/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/3521b431-83d3-4c7e-8a40-ab75c99423eb/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/dfb06f8b-73d5-4bdc-ad24-1bb8f065e46c/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/510cdf04-faed-45bb-a137-e56862dc4351/?logo=false&info=true&thumbnail=video" },
+            { linkVF: "https://app.videas.fr/embed/media/8c504937-e357-4837-91c4-2ae6d20b7eb2/?logo=false&info=true&thumbnail=video", linkVO: "https://app.videas.fr/embed/media/ed5bdc7f-6da7-43a9-8f04-96299480a841/?logo=false&info=true&thumbnail=video" },
+			
+            
+            // Ajoutez les autres épisodes en français et en version originale
+						
+            // Ajoutez les autres épisodes en français et en version originale
+        ];
+
+        var numeroEpisode = 0;
+        var versionActuelle = "VF"; // Variable pour suivre la version actuelle
+
+        function changerEpisodeViaSelect() {
+            var select = document.getElementById("selectEpisode");
+            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+
+            // Mettez à jour l'étiquette de l'épisode
+            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+            // Mettez à jour la description de l'épisode en fonction de la version
+            var descriptionKey = "description" + versionActuelle;
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerVersion() {
+            // Change la version actuelle
+            versionActuelle = document.getElementById("selectVersion").value;
+
+            // Met à jour la source vidéo et la description en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            var descriptionKey = "description" + versionActuelle;
+
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerEpisode() {
+            // Mettez à jour l'épisode en fonction de la position de la barre de progression
+            var bar = document.getElementById("episode-bar");
+            var progress = bar.value;
+            var totalEpisodes = episodes.length;
+
+            numeroEpisode = Math.floor((progress / 100) * totalEpisodes);
+            changerEpisodeViaSelect();
+        }
+
+		
+		function episodeSuivant() {
+            if (numeroEpisode < episodes.length - 1) {
+                numeroEpisode++;
+                changerEpisodeViaSelect();
+				
+				 } else {
+                // Vous avez atteint le dernier épisode, vous pouvez ajouter une logique supplémentaire ici
+                alert("Vous avez atteint le dernier épisode.");
+				
+            }
+        }
+
+        function episodePrecedent() {
+            if (numeroEpisode > 0) {
+                numeroEpisode--;
+                changerEpisodeViaSelect();
+			
+			} else {
+                // Vous êtes déjà au premier épisode
+                alert("Vous êtes déjà au premier épisode.");
+			
+            }
+        }
+
+       
+    </script>
+</body>
+</html>

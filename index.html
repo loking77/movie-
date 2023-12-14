@@ -1,0 +1,1837 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8f8f8; /* Couleur de fond générale */
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #0000ff; /* Couleur bleue */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 3;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar input[type="text"] {
+            float: right;
+            padding: 10px;
+            border: 2px solid #007BFF; /* Bordure de 2px épaisse - Bleu */
+            border-radius: 10px; /* Coins arrondis */
+            outline: none; /* Supprimez la bordure de focus par défaut */
+            font-size: 16px; /* Taille de la police */
+            margin-top: 14px;
+            margin-right: 16px;
+        }
+
+        .section {
+            margin: 1px;
+            padding: 2px;
+            background-color: lightblue;
+            cursor: pointer;
+            float: left;
+            width: 100%; /* Ajuster la largeur selon le nombre de sections */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 255, 0.6); /* Couleur bleue avec transparence */
+            z-index: 2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-30%, -50%);
+            padding: 3%;
+            width: 40%;
+            background-color: lightblue;
+            border: 5px solid green;
+            border-radius: 50px;
+            z-index: 3;
+        }
+
+        /* Styles pour la zone décorative de Contact et À propos de */
+        .decorative-zone {
+            background-color: white; /* Couleur de fond agréable */
+            padding: 20px;
+            border-radius: 50px; /* Bordure arrondie */
+            margin-top: 20px;
+        }
+
+        /* Styles pour la zone des boutons dans la page floue */
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white; /* Couleur bleue agréable compatible avec le fond */
+            padding: 5px;
+            border-radius: 10px; /* Bordure arrondie */
+            margin-top: 20px;
+            width: 50%; /* Ajuster la largeur de la zone des boutons */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styles pour chaque bouton dans la page floue */
+        .button-container a {
+            display: block;
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: white; /* Couleur bleue foncée agréable */
+            color: #000; /* Texte blanc */
+            text-decoration: none;
+            border-radius: 5px; /* Bordure arrondie */
+        }
+
+        /* Styles pour les boutons au survol dans la page floue */
+        .button-container a:hover {
+            background-color: #4a6ea9; /* Couleur bleue plus claire au survol */
+        }
+
+        . button-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #8b4513;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <title>FLIX-BOX</title>
+</head>
+
+<div class="navbar" id="navbar">
+    <a href="javascript:void(0)" onclick="showPage('Contact')">Contact</a>
+    <a href="javascript:void(0)" onclick="showPage('À propos de')">À propos de</a>
+    <a href="javascript:void(0)" onclick="showPage('Menu')">Menu</a>
+    <input type="text" size="30" onkeyup="searchMovies(this.value)" placeholder="Rechercher...">
+</div>
+
+<div class="section" id="menuSection">
+    <!-- Aucune zone décorative ici, seulement les boutons qui apparaîtront dans la page floue -->
+</div>
+
+<div class="overlay" id="overlay" onclick="hidePage()"></div>
+<div class="modal" id="modal">
+    <!-- Contenu de la page floue -->
+</div>
+
+<script>
+    window.onscroll = function() { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").style.top = "0";
+        } else {
+            document.getElementById("navbar").style.top = "-50px";
+        }
+    }
+
+    function showPage(pageName) {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal').style.display = 'block';
+
+        // Vous pouvez personnaliser le contenu de la page floue ici en fonction de la section cliquée
+        if (pageName === 'Contact') {
+            document.getElementById('modal').innerHTML = `
+                <h1>Contact</h1>
+                <p>
+                    <div class="section" id="contactSection">
+                        <div class="decorative-zone">
+                            <!-- Zone décorative pour la section Contact -->
+                            <u><h2>Bienvenue dans notre section de contact. N'hésitez pas à nous joindre pour toute question ou commentaire.</h2></u>
+                            <p>Nos coordonnées :</p>
+                            <ul>
+                                <li>Adresse : </li>
+                                <li>Téléphone : </li>
+                                <li>Email : </li>
+                            </ul>
+                        </div>
+                    </div>
+					</div>
+
+</p>
+        `;
+    } else if (pageName === 'À propos de') {
+        document.getElementById('modal').innerHTML = `
+            <h1>À propos de</h1>
+            <p>
+<div class="section" id="aboutSection">
+    <div class="decorative-zone">
+        <!-- Zone décorative pour la section À propos de -->
+        <p>Contenu décoratif pour la section À propos de.</p>
+    </div>
+</div>
+</p>
+        `;
+    } else if (pageName === 'Menu') {
+        // Ajoutez ici vos zones de boutons pour la section "Menu"
+        document.getElementById('modal').innerHTML = `
+            <h1>Menu</h1>
+            <div class="menu-buttons">
+                <a href="https://flix-box-vf.netlify.app/index.html">Home</a>
+                <a href="https://flix-box-vf.netlify.app/Genre-Film%20Anime.html">Film Anime</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Disneyland.html">Film Disneyland</a>
+				
+				
+	
+            </div>
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/STUDIO%20DC%20COMICS-Film.html">Film DC Comics</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Marvel.html">Film Marvel</a>
+				<a href="https://flix-box-vf.netlify.app/Série%20Anime.html">Séries Animé</a>
+				
+                
+            </div>
+			
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/Science-Fiction.html">Science-Fiction</a>
+			    <a href="https://flix-box-vf.netlify.app/S%C3%A9ries.html">Séries</a>
+				<a href="https://flix-box-vf.netlify.app/Film%20Comédie.html">Film Comédie</a>
+
+               </div>
+			<br><br><br>
+            <div class="menu-buttons">
+			<a href="#">Séries D'horreurs</a>
+			<a href="https://flix-box-vf.netlify.app/Autres....html">Autres...</a>
+                
+            </div>
+        `;
+    }
+}
+   
+    function hidePage() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+<br><br>
+	
+	
+	<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon Site Web</title>
+</head>
+<body>
+    <div style="position: relative;">
+	<div class="block">
+        <img src="Images/FLIX-BOX movie.gif" alt="logo FLIX BOX"   width="100%" height="300"      >
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+    <style>
+        /* Styles pour la section des films et séries */
+        .media-item {
+            margin: 12px;
+            padding: 10px;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: brown dark;
+            width: 250px;
+            float: right;
+        }
+        .media-item img {
+            max-width: 100%;
+            height: 40%;
+        }
+        .media-item h3 {
+            margin: 10px 0;
+        }
+        .media-item p {
+            font-size: 20px;
+        }
+        .media-item a {
+            display: block;
+            background-color: magenta;
+            color: brown;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .media-item a:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- ... Votre contenu HTML ... -->
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Garde de Mon Site de Streaming</title>
+</head>
+<body>
+	<div class="block">
+    <header>
+        <h1><p voici un <spam style="font-size:50px;">Bienvenue sur "FLIX-BOX" Le Site de Streaming sans <u>PUBS</u></spam></p></h1>
+        <p voici un <spam style="font-size:30px;" style="color:green;"> <u> Regardez vos films et séries préférés en streaming en haute qualité.</u></spam></p>
+    </header>
+	</div>	
+
+</html>	
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page avec la Météo</title>
+    <!-- Autres balises meta, liens CSS, etc., nécessaires pour votre page -->
+</head>
+<body>
+    <!-- Autres éléments de votre page -->
+
+    <!-- Ajoutez une balise iframe pour intégrer le code météo -->
+    <iframe src="https://flix-box-vf.netlify.app/M%C3%A9t%C3%A9o.html" width="900" height="500" frameborder="0"></iframe>
+
+    <!-- Autres éléments de votre page -->
+</body>
+</html>
+
+
+
+
+	
+	<br><br>
+	
+	
+	
+	
+	
+	
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche de Films et Séries - FLIX-BOX</title>
+
+    <!-- Ajoutez du style CSS personnalisé ici -->
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Choisissez une police de caractères */
+            background-color: #f5f5f5; /* Couleur de fond de la page */
+            color: #333; /* Couleur du texte par défaut */
+            margin: 0; /* Supprimez les marges par défaut du corps */
+        }
+
+        h1 {
+            text-align: center; /* Centrer le titre */
+            color: #007BFF; /* Couleur du titre - Bleu */
+            margin-top: 20px; /* Marge supérieure pour l'espace */
+        }
+
+        form {
+            text-align: center; /* Centrer le formulaire */
+            margin-top: 20px; /* Marge supérieure pour l'espace */
+        }
+
+        input[type="text"] {
+            width: 300px; /* Largeur de la barre de recherche */
+            padding: 10px; /* Espace intérieur pour un look agréable */
+            border: 2px solid #007BFF; /* Bordure de 2px épaisse - Bleu */
+            border-radius: 10px; /* Coins arrondis */
+            outline: none; /* Supprimez la bordure de focus par défaut */
+            font-size: 16px; /* Taille de la police */
+        }
+
+        #movieList {
+            display: flex; /* Utilisation d'un affichage flexible pour disposer les miniatures horizontalement */
+            flex-wrap: wrap; /* Permettre aux miniatures de passer à la ligne si l'espace est insuffisant */
+            gap: 20px; /* Espacement entre les miniatures */
+            justify-content: center; /* Centrer les miniatures horizontalement */
+            align-items: flex-start; /* Aligner les miniatures en haut (peut être modifié en 'center' ou 'flex-end') */
+            list-style: none; /* Supprimer les puces des listes (utilisées pour les liens) */
+            padding: 0; /* Supprimer le rembourrage par défaut de la liste */
+            margin: 0; /* Supprimer les marges par défaut de la liste */
+        }
+
+        #movieList li {
+            text-align: center; /* Centrer le texte dans chaque miniature */
+            width: 150px; /* Largeur fixe pour chaque miniature (ajustez selon vos besoins) */
+            border: 1px solid #ddd; /* Ajouter une bordure autour de chaque miniature */
+            padding: 10px; /* Ajouter un espace intérieur pour un look plus agréable */
+            background-color: #f9f9f9; /* Couleur de fond de chaque miniature */
+            border-radius: 8px; /* Ajouter des coins arrondis aux miniatures */
+            display: none; /* Masquer les miniatures par défaut */
+        }
+
+        #movieList img {
+            max-width: 100%; /* Assurer que les images ne dépassent pas la largeur de leur conteneur */
+            border-radius: 6px; /* Ajouter des coins arrondis aux images */
+            margin-bottom: 8px; /* Ajouter un espace sous chaque image */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recherche les Films et Séries disponibles sur FLIX-BOX ici</h1>
+
+    <form>
+        <input type="text" size="30" onkeyup="searchMovies(this.value)" placeholder="Rechercher...">
+    </form>
+
+    <!-- Zone de liste personnalisée -->
+    <ul id="movieList">
+        <!-- Lien vers la page du film avec miniature -->
+        <li>
+            <a href="https://flix-box-vf.netlify.app/Mulan.html">
+                <img src="Images/Mulan.jpg" alt="Mulan" width="100%" height="100%">
+                Mulan
+            </a>
+        </li>
+		
+		<li>
+            <a href="https://flix-box-vf.netlify.app/flash.html">
+                <img src="Images/flash.jpg" alt="Flash" width="100%" height="100%">
+                Flash
+            </a>
+        </li>
+		
+		<li>
+            <a href="https://flix-box-vf.netlify.app/Cars.html">
+                <img src="Images/cars.jpg" alt="Cars 1" width="100%" height="100%">
+                Cars 1
+            </a>
+        </li>
+		
+		<li>
+            <a href="https://flix-box-vf.netlify.app/cars2.html">
+                <img src="Images/cars 2.jpg" alt="Cars 2" width="100%" height="100%">
+                Cars 2
+            </a>
+        </li>
+		
+		
+		
+		<li>
+            <a href="https://flix-box-vf.netlify.app/Cars%203.html">
+                <img src="Images/cars 3.jpg" alt="Cars 3" width="100%" height="100%">
+                Cars 3
+            </a>
+        </li>
+		
+		<li>
+            <a href="https://flix-box-vf.netlify.app/Black%20Clover.html">
+                <img src="Images/black clover.jpg" alt="Black Clover le film" width="100%" height="100%">
+                Black Clover Film
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Creed%203.html">
+                <img src="Images/creed 3.jpg" alt="" width="100%" height="100%">
+                Creed III
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/blue%20beetles.html">
+                <img src="Images/blue.jpg" alt=" Bleu Beetles" width="100%" height="100%">
+                Blue Beetles
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/oppenheimer.html">
+                <img src="Images/hoppen.jpg" alt="Oppenheimer" width="100%" height="100%">
+              Openheimer
+            </a>Vostfr  
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Creed%202.html">
+                <img src="Images/creed 2.jpg" alt="Creed 2" width="100%" height="100%">
+                Creed II
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Rebelle.html">
+                <img src="Images/rebelle.jpg" alt=" Rebelle" width="100%" height="100%">
+                Rebelle
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Un%20Monstre%20%C3%A0%20Paris.html">
+                <img src="Images/monstreparis.jpg" alt="Un Monstre à Paris" width="100%" height="100%">
+                Un Monstre à Paris
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/M.%20Peabody%20et%20Sherman.html">
+                <img src="Images/peabody.jpg" alt="Mr Peabody et Sherman" width="100%" height="100%">
+                Mr Peabody 
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/coco.html">
+                <img src="Images/coco.jpg" alt="Coco" width="100%" height="100%">
+                Coco
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Spider-Man%20Across%20the%20Spider-Verse.html">
+                <img src="Images/spiderman spider-verse.jpg" alt="spiderman spider-verse" width="100%" height="100%">
+                 The spider-verse
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/The%20Super%20Mario%20Le%20Film.html">
+                <img src="Images/mario bros.jpg" alt=" The Super Mario Film" width="100%" height="100%">
+                The Super Mario
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Five%20Nights%20at%20Freddy's.html">
+                <img src="Images/five night.jpg" alt="Five Nights at Freddy's" width="100%" height="100%">
+                Five Nights
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/D%C3%A9mon%20Slayer%20Le%20Film%20%20Le%20Train%20De%20L'Infini.html">
+                <img src="Images/demon slayer.jpg" alt=" Le Train de l'infini" width="100%" height="100%">
+                Démon Slayer 
+            </a>Film
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/shazam.html">
+                <img src="Images/shazam1.jpg" alt="Shazam" width="100%" height="100%">
+                Shazam I
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Shazam%20la%20rage%20des%20dieux.html">
+                <img src="Images/shazam.jpg" alt=" Shazam la rage des dieux" width="100%" height="100%">
+                Shazam II
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/The%20Batman.html">
+                <img src="Images/the batman.jpg" alt="The Batman" width="100%" height="100%">
+                The Batman
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Batman%20The%20Dark%20Knight.html">
+                <img src="Images/the-dark-knight.jpg" alt=" Batman the-dark-knight" width="100%" height="100%">
+               The Dark Knight
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app//Batman%20Begins.html">
+                <img src="Images/batman begins.jpg" alt=" Baman Begins" width="100%" height="100%">
+                Batman Begins
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Wonder%20Woman%202.html">
+                <img src="Images/wonder woman 2.jpg" alt="Wonder Wonman II" width="100%" height="100%">
+                Wonder Wonman II
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Mercredi.html">
+                <img src="Images/mercredi.jpg" alt="Mercredi saison 1" width="100%" height="100%">
+                Mercredi 
+            </a>Saison 1
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Creed.html">
+                <img src="Images/creed.jpg" alt="L'Héritage de Rocky Balboa" width="100%" height="100%">
+                   Creed I: L'Héritage 
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/alita.html">
+                <img src="Images/alita.jpg" alt="Alita Angel" width="100%" height="100%">
+                Alita Angel Battle
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Barbie%20le%20film.html">
+                <img src="Images/barbie.jpg" alt="Barbie Le Film" width="100%" height="100%">
+                Barbie Le Film
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Avatar.html">
+                <img src="Images/avatar film.jpg" alt="" width="100%" height="100%">
+                Avatar
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Avatar%20La%20Voix%20De%20L'Eau.html">
+                <img src="Images/avatar film 2.jpg" alt="Avatar Le Film 2" width="100%" height="100%">
+                La Voix De L'Eau
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Matrix%20La%20R%C3%A9surrection.html">
+                <img src="Images/matrix-résurrection.jpg" alt="Matrix La Résurrection" width="100%" height="100%">
+                Matrix 
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Prey.html">
+                <img src="Images/prey.jpg" alt="Prey" width="100%" height="100%">
+                Prey
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder.html">
+                <img src="Images/perky blinder.jpg" alt="" width="100%" height="100%">
+               Peaky Blinder 
+            </a>S°1
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder%20Saison%202.html">
+                <img src="Images/perky blinder 2.jpg" alt="Peaky Blinder" width="100%" height="100%">
+                Peaky Blinder
+            </a>S°2
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder%20Saisons%203.html">
+                <img src="Images/perky blinder 3.jpg" alt="Peaky Blinder" width="100%" height="100%">
+                Peaky Blinder
+            </a>S°3
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder%20Saisons%204.html">
+                <img src="Images/perky blinder 4.jpg" alt=" Peaky Blinder" width="100%" height="100%">
+                 Peaky Blinder
+            </a>S°4
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder%20Saisons%205.html">
+                <img src="Images/perky blinder 5.jpg" alt="Peaky Blinder" width="100%" height="100%">
+                Peaky Blinder
+            </a>S°5
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Peaky%20Blinder%206.html">
+                <img src="Images/perky blinder 6.jpg" alt="Peaky Blinder" width="100%" height="100%">
+                Peaky Blinder
+            </a>S°6
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/One%20piece%20Saison%201.html">
+                <img src="Images/one pieceA.jpg" alt="One piece" width="100%" height="100%">
+				One piece
+            </a>S°1
+        </li>
+		
+	
+	
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/SNK%20saisons%201.html">
+                <img src="Images/snka.jpg" alt="Attack On TiTans" width="100%" height="100%">
+                Attack On TiTans
+            </a>S°1
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/SNK%20saison%202.html">
+                <img src="Images/snk 2a.jpg" alt="Attack On TiTans" width="100%" height="100%">
+                Attack On TiTans
+            </a>S°2
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/L'attaque%20des%20Titans%20Crimson.html">
+                <img src="Images/attaque on titans crimson.jpg" alt="L'attaque Des Titans" width="100%" height="100%">
+                Snk Crimson
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Dragon%20Ball%20Super%20Broly.html">
+                <img src="Images/dragon ball broly.jpg" alt="Dragon Ball Super Broly" width="100%" height="100%">
+                Dragon Ball Super
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/La%20Légende%20Du%20Papillon.html">
+                <img src="Images/la légende du papillon.jpg" alt="La Légende Du Papillon" width="100%" height="100%">
+           Legend of Butterfly
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app//Maman,j'ai%20raté%20l'avion!.html">
+                <img src="Images/raté l'avion.jpg" alt="Maman J'ai Raté L'Avion !" width="100%" height="100%">
+                Maman J'ai Raté L'Avion !
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Maman,%20j'ai%20encore%20raté%20l'avion%20!.html">
+                <img src="Images/raté l'avion 2.jpg" alt="J'ai Encore Raté L'Avion !" width="100%" height="100%">
+                J'ai Encore Raté L'Avion !
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Coupez%20!.html">
+                <img src="Images/coupez.jpg" alt="Coupez !" width="100%" height="100%">
+                Coupez !
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Les%20Deguns.html">
+                <img src="Images/deguns.jpg" alt="Les Deguns" width="100%" height="100%">
+                Les Deguns
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Les%20Deguns%202.html">
+                <img src="Images/deguns 2.jpg" alt="Les Deguns 2" width="100%" height="100%">
+                Les Deguns 2
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Lilo%20et%20stitch.html">
+                <img src="Images/lilo.jpg" alt="Lilo Et Stitch" width="100%" height="100%">
+                Lilo Et Stitch
+            </a>
+        </li>
+		
+	
+	
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Buzz%20L'%C3%A9clair.html">
+                <img src="Images/buzz léclair.jpg" alt="Buzz L'éclair<" width="100%" height="100%">
+                Buzz L'éclair
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/La%20Reine%20Des%20Neige.html">
+                <img src="Images/reinedesneiges.jpg" alt="La Reine Des Neiges" width="100%" height="100%">
+                La Reine Des Neiges
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app//Les%20Indestructibles%202.html">
+                <img src="Images/indestructibles 2.jpg" alt="Les Indestructibles 2" width="100%" height="100%">
+                Les Indestructibles 2
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Black%20Window.html">
+                <img src="Images/black window.jpg" alt="BLACK WIDOW" width="100%" height="100%">
+                BLACK WIDOW
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Spider%20Man%20Homecoming.html">
+                <img src="Images/spider-man-homecoming.jpg" alt="Spider Man Homecoming" width="100%" height="100%">
+               Spider Man Homecoming 
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Spider-man-no-way-home.html">
+                <img src="Images/spider-man-no-way-home.jpg" alt="Spider Man No Way Home" width="100%" height="100%">
+                Spider Man No Way Home
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Spider-Man%203.html">
+                <img src="Images/spider man 3.jpg" alt="Spider-Man III" width="100%" height="100%">
+                Spider-Man III
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Avengers%20Infinity%20War.html">
+                <img src="Images/avengers.jpg" alt="Avengers: Infinity War" width="100%" height="100%">
+                Avengers: Infinity War
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Avengers%20Endgame.html">
+                <img src="Images/avengers end game.jpg" alt="Avengers Endgame" width="100%" height="100%">
+                Avengers Endgame
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Captain%20America%20Civil%20War.html">
+                <img src="Images/civil war.jpg" alt="Captain America: Civil War" width="100%" height="100%">
+                Captain America: Civil War
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Black%20Adam.html">
+                <img src="Images/black adam.jpg" alt="Black Adam" width="100%" height="100%">
+                Black Adam
+            </a>
+        </li>
+		
+	
+	
+	
+<li>
+            <a href="https://flix-box-vf.netlify.app/Suicide%20Squad.html">
+                <img src="Images/suicide squad.jpg" alt="Suicide Squad" width="100%" height="100%">
+                Suicide Squad
+            </a>
+        </li>
+		
+	<li>
+            <a href="https://flix-box-vf.netlify.app/Suicide%20Squad%202.html">
+                <img src="Images/suicide squad 2.jpg" alt="Suicide Squad II" width="100%" height="100%">
+                Suicide Squad II
+            </a>
+        </li>
+		
+	<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	
+<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	<li>
+            <a href="">
+                <img src="Images/.jpg" alt="" width="100%" height="100%">
+                
+            </a>
+        </li>
+		
+	
+
+	
+	
+	
+	
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+	
+	
+		
+
+	
+	
+		
+		
+
+
+        <!-- Ajoutez d'autres liens avec miniatures selon vos besoins -->
+    </ul>
+<script>
+    function searchMovies(query) {
+        // Convertir la requête en minuscules pour une correspondance insensible à la casse
+        query = query.toLowerCase();
+
+        // Sélectionner tous les liens dans la liste
+        var movieItems = document.querySelectorAll("#movieList li");
+
+        // Si la barre de recherche est vide, masquer toutes les vignettes
+        if (query === "") {
+            for (var i = 0; i < movieItems.length; i++) {
+                movieItems[i].style.display = "none";
+            }
+            return; // Sortir de la fonction pour éviter de continuer
+        }
+
+        // Parcourir les liens et les afficher/masquer en fonction de la recherche
+        for (var i = 0; i < movieItems.length; i++) {
+            var movieTitle = movieItems[i].innerText.toLowerCase();
+
+            // Utiliser la méthode includes pour vérifier si le titre inclut la requête
+            if (movieTitle.includes(query)) {
+                movieItems[i].style.display = "block";
+            } else {
+                movieItems[i].style.display = "none";
+            }
+        }
+    }
+</script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FLIX-BOX HTML</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+
+    <!-- Votre contenu HTML -->
+
+</body>
+</html>
+
+
+
+
+<br><br><br>
+		
+	<br><br><br>
+
+
+
+<main>
+
+<div style="position: relative;">
+<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;"> Dernières Sorties</spam></P></h2>
+</div>			
+	
+
+	
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 15px solid blue;
+      border-radius: 30px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item">
+                <img src="Images/black clover.jpg" alt="Black Clover Le Film">
+                <h3> Black Clover Le Film</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/Black%20Clover.html">Regarder EN VF</a>
+            </div></div>
+ 
+      <div class="carousel-item">
+            <div class="media-item">
+                <img src="Images/flash.jpg" alt="The Flash Le Film">
+                <h3>The Flash Le Film</h3>
+                <p>du Fim </p>
+                <a href="https://flix-box-vf.netlify.app/flash.html">Regarder EN VF</a>
+            </div></div>
+ 
+      <div class="carousel-item"><div class="media-item">
+                <img src="Images/creed 3.jpg" alt="Creed III Le Film">
+                <h3>Creed III Le Film</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Creed%203.html">Regarder EN VF</a>
+            </div>
+            </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item">
+                <img src="Images/blue.jpg" alt="Blue Beetle Le Film">
+                <h3> Blue Beetle Le Film</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/blue%20beetles.html">Regarder EN VF</a>
+            </div></div>
+ 
+      <div class="carousel-item"><div class="media-item">
+                <img src="Images/hoppen.jpg" alt="Oppenheimer">
+                <h3>Oppenheimer</h3>
+                <p> Film</p>
+                <a href="https://flix-box-vf.netlify.app/oppenheimer.html">Regarder EN VOSTFR</a>
+            </div></div>
+ 
+      <div class="carousel-item"><div class="media-item">
+                <img src="Images/creed 2.jpg" alt="Creed II">
+                <h3>Creed II</h3>
+                <p>Description du Film</p>
+                <a href="https://flix-box-vf.netlify.app/Creed%202.html">Regarder EN VF</a>
+            </div>
+      </div>
+ 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+				
+		<br><br><br>
+			
+			
+			
+	
+	
+	<hr>
+		<br><br><br>
+	
+	<hr>
+	
+	
+	
+	
+	
+	
+	<section>
+	<main>
+
+<div style="position: relative;">
+<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;">FILMS DISNEYLAND</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+      </div>
+	  
+	
+	  	
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item"><img src="Images/cars.jpg" alt="Cars">
+                <h3>Cars</h3>
+                <p> Film </p>
+                <a href="https://flix-box-vf.netlify.app/Cars.html">Regarder EN VF</a>
+            </div>
+            
+                </div>
+ 
+      
+      <div class="carousel-item"><div class="media-item">  <img src="Images/Cars 2.jpg" alt="Cars 2">
+                <h3>Cars 2</h3>
+                <p>Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/cars2.html">Regarder EN VF</a>
+            </div>
+            </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item"><img src="Images/cars 3.jpg" alt="Cars 3">
+                <h3>Cars 3</h3>
+                <p>Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Cars%203.html">Regarder EN VF</a>
+            </div>
+               </div>
+		
+
+	 <div class="carousel-item">
+            <div class="media-item"> <img src="Images/rebelle.jpg" alt="Rebelle">
+                <h3>Rebelle</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Rebelle.html">Regarder EN VF</a>
+            </div>
+
+               
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item"> <img src="Images/monstreparis.jpg" alt="Un Monstre à Paris">
+                <h3>Un Monstre à Paris</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/Un%20Monstre%20%C3%A0%20Paris.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item">
+                <img src="Images/mulan.jpg" alt="Mulan">
+                <h3>Mulan</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/Mulan.html">Regarder EN VF</a>
+            </div>
+			
+			
+			
+      </div>
+ 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+	 
+	  
+	  
+	  
+        <br><br><br>
+
+	
+	
+	<hr>
+		<br><br><br>
+	
+	<hr>
+	
+
+
+
+
+		<div style="position: relative;">
+<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;">GENRES/ FILMS ANIME</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+	</div>	
+	
+	
+	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item"><img src="Images/peabody.jpg" alt="Mr peabody et sherman ">
+                <h3>Mr Peabody Et Sherman </h3>
+                <p> Film </p>
+                <a href="https://flix-box-vf.netlify.app/M.%20Peabody%20et%20Sherman.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item"> <img src="Images/coco.jpg" alt="COCO">
+                <h3>COCO</h3>
+                <p>Film </p>
+                <a href="https://flix-box-vf.netlify.app/coco.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item"> <img src="Images/spiderman spider-verse.jpg" alt="Spider-Man Across the Spider-Verse">
+                <h3>Across the Spider-Verse</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Spider-Man%20Across%20the%20Spider-Verse.html">Regarder EN VF</a>
+            </div>
+               
+            </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item"> <img src="Images/mario bros.jpg" alt="The Super Mario Bros Le Film">
+                <h3>The Super Mario Bros</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/The%20Super%20Mario%20Le%20Film.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+	  
+	  
+      <div class="carousel-item">
+            <div class="media-item"> <img src="Images/five night.jpg" alt="Five Nights At Freddy's Film">
+                <h3>five nights at freddy's film</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Five%20Nights%20at%20Freddy's.html">Regarder EN VF</a>
+            </div>
+            
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item"> <img src="Images/demon slayer.jpg" alt="Démon Slayer Le Film Le Train De L'Infini">
+                <h3>Le Train De L'Infini</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/D%C3%A9mon%20Slayer%20Le%20Film%20%20Le%20Train%20De%20L'Infini.html">Regarder EN VF</a>
+            </div>
+               </div>
+ 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+	
+<br><br><br>
+
+		        
+		<hr>
+		<br><br><br>
+	
+	<hr>
+		
+		
+			<div style="position: relative;">
+			<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;">STUDIO DC COMICS/Film</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+		</div>
+		
+	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item"> <img src="Images/shazam1.jpg" alt="Shazam !">
+                <h3>Shazam !</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/shazam.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item">  <img src="Images/shazam.jpg" alt="Shazam">
+                <h3>Shazam La Rage Des Dieux</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Shazam%20la%20rage%20des%20dieux.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item">  <img src="Images/the batman.jpg" alt="The Batman">
+                <h3>The Batman</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/The%20Batman.html">Regarder EN VF</a>
+            </div>
+            </div>
+ 
+      <div class="carousel-item">
+            <div class="media-item">  <img src="Images/the-dark-knight.jpg" alt="Batman the-dark-knight">
+                <h3>Batman: The Dark Knight</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Batman%20The%20Dark%20Knight.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+	  
+	  
+      <div class="carousel-item">
+            <div class="media-item">  <img src="Images/batman begins.jpg" alt="Batman Begins">
+                <h3>Batman Begins</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app//Batman%20Begins.html">Regarder EN VF</a>
+            </div>
+		
+            
+                </div>
+ 
+      <div class="carousel-item"><div class="media-item"> <img src="Images/wonder woman 2.jpg" alt="Wonder Woman 2">
+                <h3>Wonder Woman 2</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Wonder%20Woman%202.html">Regarder EN VF</a>
+            </div>
+               </div>
+   
+ 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+	
+	
+	
+	
+	
+	<br><br><br>
+
+		
+		        
+		<hr>
+		<br><br><br>
+	
+	<hr>
+			
+		<div style="position: relative;">
+		<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;">Séries D'Horreurs</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+</div>
+
+	
+	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item">   <img src="Images/mercredi.jpg" alt="Wednesday">
+                <h3>Mercredi</h3>
+                <p>SAISON 1</p>
+                <a href="https://flix-box-vf.netlify.app/Mercredi.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+     
+ 
+	  
+	 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+	
+			<br><br><br>
+
+		
+		
+		
+		
+		<div style="position: relative;">
+		<div class="Autres">
+<h2><p voici un <spam style="font-size:40px;">Genres Populaires</spam></P></h2>
+            <!-- Ajoutez des liens vers les genres populaires ici -->
+</div>
+
+
+
+	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .carousel-container {
+      width: 95%; /* Ajustez selon vos besoins */
+      margin: auto;
+      overflow: hidden;
+      border: 5px solid blue;
+      border-radius: 20px; /* Ajustez selon vos besoins */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 30%; /* Ajustez selon vos besoins */
+      flex: 0 0 auto;
+      background-color: brown;
+      color: white; /* Texte blanc pour une meilleure lisibilité */
+      padding: 20px; /* Ajustez selon vos besoins */
+      text-align: center; /* Ajustez selon vos besoins */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel">
+
+      <!-- Vos vignettes de films ici -->
+      <div class="carousel-item"><div class="media-item">   <img src="Images/creed.jpg" alt="Creed - L'Héritage de Rocky Balboa - film">
+                <h3>L'Héritage de Rocky Balboa</h3>
+                <p>Film</p>
+                <a href="https://flix-box-vf.netlify.app/Creed.html">Regarder EN VF</a>
+            </div> 
+                </div>
+ 
+     <div class="carousel-item"><div class="media-item">   <img src="Images/alita.jpg" alt="Alita">
+                <h3>Alita Angel Battle</h3>
+                <p>Description du Film 2</p>
+                <a href="https://flix-box-vf.netlify.app/alita.html">Regarder EN VF</a>
+            </div>
+                </div>
+ 
+	  <div class="carousel-item"><div class="media-item"> <img src="Images/barbie.jpg" alt="Barbie Le Film">
+                <h3>Barbie Le Film</h3>
+                <p>Description du Film 3</p>
+                <a href="https://flix-box-vf.netlify.app/Barbie%20le%20film.html">Regarder EN VF</a>
+            </div>
+			
+                </div>
+	 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const carousels = document.querySelectorAll(".carousel");
+
+      carousels.forEach(function (carousel) {
+        let translateValue = 0;
+
+        function nextSlide() {
+          translateValue -= 100;
+          if (translateValue < -100) {
+            translateValue = 0;
+          }
+          carousel.style.transform = `translateX(${translateValue}%)`;
+        }
+
+        setInterval(nextSlide, 7000); // Changez la valeur pour ajuster la vitesse du défilement
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+      <br><br><br>
+		
+	
+		
+		
+		
+		
+		
+		
+		
+    <footer>
+        <p>&copy; 2023 Mon Site de Streaming. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

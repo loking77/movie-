@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .sidebar {
+            width: 0;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            z-index: 2;
+        }
+
+        .main-content {
+            margin-right: 250px;
+            transition: margin-right 0.5s;
+        }
+
+        .menu-button {
+            float: left;
+            z-index: 3;
+        }
+body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .sidebar {
+            height: 300vh;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #8B4513; /* Marron */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            color: white;
+			
+        }
+
+        .sidebar a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            margin-bottom: 15px; /* Ajout d'une marge entre les boutons */
+            background-color: #A0522D; /* Marron plus foncé */
+            border-radius: 5px; /* Coins arrondis */
+            width: 150px; /* Largeur fixe des boutons */
+            text-align: center; /* Centrer le texte dans le bouton */
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #996633; /* Couleur au survol */
+			
+        }
+
+        .menu-button {
+            font-size: 30px;
+            border: none;
+            padding: 10px;
+            background-color: #8B4513; /* Marron */
+            color: white;
+            cursor: pointer;
+            position: fixed;
+            z-index: 1;
+        }
+
+        .menu-button:hover {
+            background-color: #A0522D; /* Marron plus foncé */
+        }
+
+        .main-content {
+            margin-left: 200px;
+            transition: margin-left 0.5s;
+
+        }
+
+        .sidebar-open .main-content {
+            margin-left: 450px;
+        }
+    </style>
+    <title>Barre Latérale</title>
+</head>
+<body>
+    <div class="sidebar">
+	    <a href="https://flix-box-vf.netlify.app/index.html">HOME</a>
+        <a href="https://flix-box-vf.netlify.app/Genre-Film%20Anime.html">Genre/Film Anime</a>
+        <a href="https://flix-box-vf.netlify.app/Film%20Disneyland.html">Films/Disneyland</a>
+        <a href="#">STUDIO DC COMICS/Film</a>
+        <a href="#">Séries/D'horreurs</a>
+        <a href="#">Film/Marvel</a>
+        <a href="#">Séries/D'Animé</a>
+        <a href="https://flix-box-vf.netlify.app/Autres....html">Autres...</a>
+        <a href="#">Science-Fiction</a>
+        <a href="#">Séries</a>
+        <a href="#">Page 10</a>
+		<a href="#">Page 9</a>
+        <a href="#">Page 10</a>
+		<a href="#">Page 9</a>
+        
+    </div>
+        /* Ajoutez d'autres styles au besoin */
+
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <!-- Ajoutez le contenu de la barre latérale ici -->
+    </div>
+
+    <div class="main-content">
+        <!-- Ajoutez le contenu principal ici -->
+
+        <!-- Bouton/menu pour ouvrir la barre latérale -->
+        <div class="menu-button" onclick="toggleSidebar()">
+            <!-- Ajoutez le contenu du bouton/menu ici -->
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            var menuButton = document.querySelector('.menu-button');
+
+            sidebar.classList.toggle('sidebar-open');
+            sidebar.style.width = (sidebar.style.width === '250px') ? '0' : '250px';
+            menuButton.style.marginLeft = (sidebar.style.width === '250px') ? '250px' : '0';
+        }
+
+        window.onclick = function (event) {
+            var sidebar = document.querySelector('.sidebar');
+            var menuButton = document.querySelector('.menu-button');
+
+            if (event.target !== sidebar && event.target !== menuButton) {
+                sidebar.style.width = '0';
+                menuButton.style.marginLeft = '0';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+

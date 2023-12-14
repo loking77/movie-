@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNK Saisons 1</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Styles globaux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles pour le bannière du héros */
+        #heroBanner {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 12px;
+            border: 5px solid darkgreen;
+            border-radius: 10px;
+            background-color: darkred;
+            width: 250px;
+        }
+
+        #heroBanner img {
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        #heroBanner h1 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+
+        /* Styles pour la sélection d'épisodes et de versions */
+        #video-container {
+            text-align: center;
+        }
+
+        #episode-bar {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #description {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="heroBanner">
+        <img src="Images/snk.jpg" alt="SNK Poster">
+        <h1>Attaque Des Titans</h1>
+        <!-- Ajoutez d'autres éléments décoratifs ou des informations supplémentaires ici -->
+    </div>
+
+    <div style="margin-top: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+        <label for="selectEpisode" style="margin-bottom: 5px;">Choisir un épisode:</label>
+        <select id="selectEpisode" onchange="changerEpisodeViaSelect()" style="padding: 5px; font-size: 16px;">
+            <!-- Ajoutez vos options pour les épisodes ici -->
+            <option value="0">Épisode 1</option>
+            <option value="1">Épisode 2</option>
+            <option value="2">Épisode 3</option>
+			<option value="3">Épisode 4</option>
+            <option value="4">Épisode 5</option>
+            <option value="5">Épisode 6</option>
+			<option value="6">Épisode 7</option>
+			<option value="7">Épisode 8</option>
+			<option value="8">Épisode 9</option>
+            <option value="9">Épisode 10</option>
+            <option value="10">Épisode 11</option>
+			<option value="11">Épisode 12</option>
+            <option value="12">Épisode 13</option>
+            <option value="13">Épisode 14</option>
+			<option value="14">Épisode 15</option>
+			<option value="15">Épisode 16</option>
+			<option value="16">Épisode 17</option>
+            <option value="17">Épisode 18</option>
+            <option value="18">Épisode 19</option>
+			<option value="19">Épisode 20</option>
+            <option value="20">Épisode 21</option>
+            <option value="21">Épisode 22</option>
+			<option value="22">Épisode 23</option>
+			<option value="23">Épisode 24</option>
+			<option value="24">Épisode 25</option>
+            <!-- ... -->
+        </select>
+
+        <label for="selectVersion">Choisir la version:</label>
+        <select id="selectVersion" onchange="changerVersion()" style="margin-left: 10px; padding: 8px; background-color: #8B4513; color: white;">
+            <!-- Ajoutez vos options pour les versions ici -->
+            <option value="VF">Version Française</option>
+            <option value="VO">Version VOSTFR</option>
+        </select>
+    </div>
+
+    <div id="video-container">
+        <iframe id="serieVideo" width="800" height="450" src="" frameborder="0" allowfullscreen></iframe>
+        <input type="range" id="episode-bar" value="0" step="1" min="0" max="100" oninput="changerEpisode()" onclick="sauterEpisode(event)">
+        <p id="episode-label" style="color: #4CAF50;">Épisode: 1</p>
+
+        <!-- Boutons pour changer les épisodes -->
+		
+		
+	<style>
+    /* Ajoutez du style CSS pour le bouton */
+    .accueil-btn {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style
+
+    <!-- Le reste de votre code HTML ici -->
+
+    <!-- Lien vers l'accueil -->
+    <a href="https://flix-box-vf.netlify.app/Série%20Anime.html" class="accueil-btn">Accueil</a>
+
+    <!-- Le reste du contenu de votre page -->
+
+        <button onclick="episodePrecedent()">Épisode Précédent</button>
+        <button onclick="episodeSuivant()">Épisode Suivant</button>
+
+        <!-- Description de l'épisode -->
+        <div id="description">
+            <h3 style="color: #4CAF50;">Aucune Description de l'épisode</h3>
+            <p id="episode-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+        </div>
+    </div>
+	
+	
+</body>
+</html>
+
+    <script>
+        var episodes = [
+			{ linkVF: "https://app.videas.fr/embed/media/4fb0621b-1b98-4734-a443-b68e18f49c8d/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/df5bf4d2-4675-4cf1-98cb-d21b4dee259c/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/35ddcb16-9aa4-4408-bba7-15fe846bf0d6/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/ff2fde67-0185-4f15-89dc-b35311115435/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/9d6a84ee-b9e7-4cba-a92b-a0671bd71270/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/6e75bdd2-ab3f-4c25-8001-fd5342d42fa1/?logo=false&info=true&thumbnail=video"},
+		    { linkVF: "https://app.videas.fr/embed/media/b9d8aac2-cd7d-44e6-99b9-9fb59950ab57/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/3424d5aa-eade-492f-ac1f-5eae8da6ceb2/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/87048a63-67f9-4ee8-bedf-23ec9ba694a4/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/e743fbf8-d7c8-4c00-84c4-6f913e9c497c/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/f92aada0-945e-43b6-93fd-f7d81bca372d/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/90c5e683-8543-40ca-a17f-4bbd3493643d/?logo=false&info=true&thumbnail=video"},
+			{ linkVF: "https://app.videas.fr/embed/media/5ab2dc67-ecc0-4913-a671-22daafb7f4a2/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/ed79287d-85ac-4827-9d20-84a35fec9d92/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/a81bd084-eebf-45b6-9b1f-158f084130eb/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/e769092a-9a39-405d-b1eb-acf4357c4f46/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/7fcffcdf-a182-48c5-934d-3302bb43ab33/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/d870dc7f-3ba6-469e-809b-bf0d72a953f6/?logo=false&info=true&thumbnail=video"},
+		    { linkVF: "https://app.videas.fr/embed/media/78bf7264-0ca8-4971-8c89-6e6533776900/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/a42ed17b-3e71-4f4d-89e6-0e80116bae4a/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/2a791427-563e-454b-91a0-3da629ac7a0c/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/5cd67906-0b8a-4fee-877d-e4867b2b1306/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/0af2daf0-2403-47a4-9573-793a7bab3cce/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/9bfdc6ac-bf9f-4f57-8ca0-0f3611ffae0c/?logo=false&info=true&thumbnail=video"},
+			{ linkVF: "https://app.videas.fr/embed/media/bacb0d6e-0760-4ae4-979e-f9782cd34593/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/c435d860-160a-4bd6-940a-2fceca6337e6/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/cd5a1609-b77b-4361-87c6-db4944534347/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/1b9011a9-d8ee-4beb-aad6-7c9938ebcfa0/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/19ff7441-f88d-41af-a0a6-8a6db3539f31/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/e03ef6e1-79a5-4bd4-adb9-1f89b62710f0/?logo=false&info=true&thumbnail=video"},
+		    { linkVF: "https://app.videas.fr/embed/media/fecf0a7d-6d0f-494f-8b55-5139210f5e42/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/b8f8e1de-5339-4991-b5c4-f0a09b050061/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/520d1cab-7f2f-4a8a-a241-c1781f69e08e/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/4220304c-9252-40c1-9d69-f69296262821/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/608ddf70-d03b-46e3-960d-0b4a02cb6b9f/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/4ba02622-5567-44fd-bfb2-31374ff5a38d/?logo=false&info=true&thumbnail=video"},
+			{ linkVF: "https://app.videas.fr/embed/media/304514f4-d6b8-41bb-bec3-925dd4ede41d/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/08b51fa0-4814-42b0-8cdd-a88f4c26636d/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/b30ad4f6-509d-41f5-bc08-01be2d3afd78/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/25ea8cb7-0fb0-49f2-b71b-15a2640bfa2a/?logo=false&info=true&thumbnail=video"},
+            { linkVF: "https://app.videas.fr/embed/media/cfa74f50-7e96-46d0-8016-db4676de5e21/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/43a0aa04-a450-4763-b094-6e370a6bd641/?logo=false&info=true&thumbnail=video",},
+		    { linkVF: "https://app.videas.fr/embed/media/e609091f-e465-4cea-af10-8213319b6423/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/b35c79af-3478-4072-b80b-4c9e6b6bdac3/?logo=false&info=true&thumbnail=video",},
+            { linkVF: "https://app.videas.fr/embed/media/6c12075c-a96e-4c97-857e-888ef19a9bcc/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/089316db-a1df-478a-8389-19a4cb3e0936/?logo=false&info=true&thumbnail=video",},
+            { linkVF: "https://app.videas.fr/embed/media/564e4fc4-e653-45e4-82f6-5ad22a45f3b8/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode VF", linkVO: "https://app.videas.fr/embed/media/e1e85473-2410-4555-b8af-b8eeaeee3225/?logo=false&info=true&thumbnail=video",},
+			{ linkVF: "https://app.videas.fr/embed/media/e74d4625-5514-465a-8245-9dfa1489e0ee/?logo=false&info=true&thumbnail=video", descriptionVF: "Description de l'épisode  VF", linkVO: "https://app.videas.fr/embed/media/9c9d85bc-f912-4ff7-9ccf-3801343dd0ef/?logo=false&info=true&thumbnail=video",},
+       
+            // Ajoutez les autres épisodes en français et en version originale
+						
+            // Ajoutez les autres épisodes en français et en version originale
+        ];
+
+        var numeroEpisode = 0;
+        var versionActuelle = "VF"; // Variable pour suivre la version actuelle
+
+        function changerEpisodeViaSelect() {
+            var select = document.getElementById("selectEpisode");
+            numeroEpisode = parseInt(select.value); // Convertit la valeur de la liste déroulante en numéro d'épisode
+
+            // Mettez à jour le lecteur vidéo avec le lien de l'épisode sélectionné en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+
+            // Mettez à jour l'étiquette de l'épisode
+            document.getElementById("episode-label").innerHTML = "Épisode: " + (numeroEpisode + 1);
+
+            // Mettez à jour la description de l'épisode en fonction de la version
+            var descriptionKey = "description" + versionActuelle;
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerVersion() {
+            // Change la version actuelle
+            versionActuelle = document.getElementById("selectVersion").value;
+
+            // Met à jour la source vidéo et la description en fonction de la version
+            var sourceKey = "link" + versionActuelle;
+            var descriptionKey = "description" + versionActuelle;
+
+            document.getElementById("serieVideo").src = episodes[numeroEpisode][sourceKey];
+            document.getElementById("episode-description").innerHTML = episodes[numeroEpisode][descriptionKey];
+        }
+
+        function changerEpisode() {
+            // Mettez à jour l'épisode en fonction de la position de la barre de progression
+            var bar = document.getElementById("episode-bar");
+            var progress = bar.value;
+            var totalEpisodes = episodes.length;
+
+            numeroEpisode = Math.floor((progress / 100) * totalEpisodes);
+            changerEpisodeViaSelect();
+        }
+
+		
+		function episodeSuivant() {
+            if (numeroEpisode < episodes.length - 1) {
+                numeroEpisode++;
+                changerEpisodeViaSelect();
+				
+				 } else {
+                // Vous avez atteint le dernier épisode, vous pouvez ajouter une logique supplémentaire ici
+                alert("Vous avez atteint le dernier épisode.");
+				
+            }
+        }
+
+        function episodePrecedent() {
+            if (numeroEpisode > 0) {
+                numeroEpisode--;
+                changerEpisodeViaSelect();
+			
+			} else {
+                // Vous êtes déjà au premier épisode
+                alert("Vous êtes déjà au premier épisode.");
+			
+            }
+        }
+
+       
+    </script>
+</body>
+</html>

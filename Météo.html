@@ -1,0 +1,305 @@
+
+<br><br><br><br>
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo</title>
+    <style>
+        body {
+            font-family: 'News times Roman', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #content {
+            background-color: pink;
+            padding: 20px;
+            border-radius: 50px;
+			border: 5px solid blue;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .weather-container {
+            margin-top: 20px;
+        }
+
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .weather-animation {
+            width: 150px;
+            height: 150px;
+            margin-top: 10px;
+        }
+
+        .weather-description {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .temperature {
+            margin-top: 5px;
+            font-size: 1.5em;
+        }
+
+        .weather-details {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .date-container {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #3498db;
+        }
+
+        .clock-container {
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
+
+        .greeting-container {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #3498db;
+        }
+
+        @keyframes fallRain {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes fallSnow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes flashThunderstorm {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes rumbleThunderstorm {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
+        @keyframes blowWind {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        @keyframes floatClouds {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenu principal -->
+    <div id="content">
+        <h1>Prévisions Météo</h1>
+
+        <!-- Conteneur pour la météo -->
+        <div class="weather-container">
+            <div class="weather-info">
+                <div class="weather-animation" id="weatherAnimation"></div>
+                <div class="weather-description" id="weatherDescription"></div>
+                <div class="temperature" id="temperature"></div>
+            </div>
+
+            <!-- Détails météorologiques -->
+            <div class="weather-details" id="weatherDetails"></div>
+        </div>
+
+        <!-- Conteneur pour la date -->
+        <div class="date-container" id="dateContainer"></div>
+
+        <!-- Conteneur pour l'horloge -->
+        <div class="clock-container" id="clockContainer"></div>
+
+        <!-- Salutation en fonction de l'heure -->
+        <div class="greeting-container" id="greeting"></div>
+    </div>
+
+    <!-- Script JavaScript pour la météo et l'horloge -->
+    <script>
+        function updateWeather() {
+            const apiKey = 'b4331d24f50c9cc51f07a10f396b0ab3';
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const weatherAnimation = document.getElementById("weatherAnimation");
+                            const weatherDescription = document.getElementById("weatherDescription");
+                            const temperature = document.getElementById("temperature");
+                            const weatherDetails = document.getElementById("weatherDetails");
+                            const city = data.name;
+                            const country = data.sys.country;
+
+                            const iconCode = data.weather[0].icon;
+                            const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+                            weatherAnimation.style.backgroundImage = `url(${getWeatherAnimation(data.weather[0].main)})`;
+                            weatherDescription.innerText = data.weather[0].description;
+                            temperature.innerText = `${data.main.temp}°C`;
+
+                            weatherDetails.innerHTML = `
+                                <p>Humidité : ${data.main.humidity}%</p>
+                                <p>Pression : ${data.main.pressure} hPa</p>
+                                <p>Vitesse du vent : ${data.wind.speed} m/s</p>
+                                <h1>Ville : ${city}</h1>
+                                <h2>Pays : ${country}</h2>
+                            `;
+                        })
+                        .catch(error => console.error('Erreur lors de la récupération des données météo', error));
+                },
+                (error) => {
+                    console.error('Erreur lors de la récupération de la position', error);
+                }
+            );
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById("clockContainer").innerText = timeString;
+        }
+
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting = '';
+
+            if (hour >= 5 && hour < 12) {
+                greeting = 'Bonjour !';
+            } else if (hour >= 12 && hour < 18) {
+                greeting = 'Bonne après-midi !';
+            } else {
+                greeting = 'Bonne soirée !';
+            }
+
+            document.getElementById("greeting").innerText = greeting;
+        }
+
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('fr-FR', options);
+
+            document.getElementById("dateContainer").innerText = dateString;
+        }
+
+        function getWeatherAnimation(weatherCondition) {
+            switch (weatherCondition.toLowerCase()) {
+                case 'rain':
+                    return 'https://media.giphy.com/media/3oKIPbue8ke4eTrrmg/giphy.gif';
+                case 'snow':
+                    return 'https://media.giphy.com/media/dNtVx3kqwRcs4/giphy.gif';
+                case 'clear':
+                    return 'Images/soleil.gif';
+                case 'clouds':
+                    return 'Images/nuageux.gif';
+                case 'thunderstorm':
+                    return 'https://media.giphy.com/media/l4FGpLYrDmhj1cnMk/giphy.gif';
+                case 'wind':
+                    return 'https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif';
+                default:
+                    return ''; // Animation par défaut ou vide si aucune condition n'est remplie
+            }
+        }
+
+        window.onload = function() {
+            // Mettez à jour la météo au chargement de la page
+            updateWeather();
+
+            // Mettez à jour la météo toutes les 10 minutes (60 000 millisecondes)
+            setInterval(updateWeather, 60000);
+
+            // Mettez à jour l'horloge toutes les secondes
+            setInterval(updateClock, 1000);
+
+            // Mettez à jour la date toutes les minutes
+            setInterval(updateDate, 60000);
+
+            // Mettez à jour la salutation toutes les heures
+            setInterval(updateGreeting, 3600000);
+        };
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Autres</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Votre contenu HTML -->
+</body>
+</html>
+
+
+
+
+

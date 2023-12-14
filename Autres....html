@@ -1,0 +1,551 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8f8f8; /* Couleur de fond générale */
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #0000ff; /* Couleur bleue */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 3;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar input[type="text"] {
+            float: right;
+            padding: 10px;
+            border: 2px solid #007BFF; /* Bordure de 2px épaisse - Bleu */
+            border-radius: 10px; /* Coins arrondis */
+            outline: none; /* Supprimez la bordure de focus par défaut */
+            font-size: 16px; /* Taille de la police */
+            margin-top: 14px;
+            margin-right: 16px;
+        }
+
+        .section {
+            margin: 1px;
+            padding: 2px;
+            background-color: lightblue;
+            cursor: pointer;
+            float: left;
+            width: 100%; /* Ajuster la largeur selon le nombre de sections */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 255, 0.6); /* Couleur bleue avec transparence */
+            z-index: 2;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-30%, -50%);
+            padding: 3%;
+            width: 40%;
+            background-color: lightblue;
+            border: 5px solid green;
+            border-radius: 50px;
+            z-index: 3;
+        }
+
+        /* Styles pour la zone décorative de Contact et À propos de */
+        .decorative-zone {
+            background-color: white; /* Couleur de fond agréable */
+            padding: 20px;
+            border-radius: 50px; /* Bordure arrondie */
+            margin-top: 20px;
+        }
+
+        /* Styles pour la zone des boutons dans la page floue */
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white; /* Couleur bleue agréable compatible avec le fond */
+            padding: 5px;
+            border-radius: 10px; /* Bordure arrondie */
+            margin-top: 20px;
+            width: 50%; /* Ajuster la largeur de la zone des boutons */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styles pour chaque bouton dans la page floue */
+        .button-container a {
+            display: block;
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            margin-bottom: 15px;
+            background-color: white; /* Couleur bleue foncée agréable */
+            color: #000; /* Texte blanc */
+            text-decoration: none;
+            border-radius: 5px; /* Bordure arrondie */
+        }
+
+        /* Styles pour les boutons au survol dans la page floue */
+        .button-container a:hover {
+            background-color: #4a6ea9; /* Couleur bleue plus claire au survol */
+        }
+
+        . button-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #8b4513;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <title>Autre</title>
+</head>
+
+<div class="navbar" id="navbar">
+    <a href="javascript:void(0)" onclick="showPage('Contact')">Contact</a>
+    <a href="javascript:void(0)" onclick="showPage('À propos de')">À propos de</a>
+    <a href="javascript:void(0)" onclick="showPage('Menu')">Menu</a>
+    <a href="javascript:void(0)"('Autres')"><div class="Autres">Autres</div></a>
+   
+			
+			
+			
+   
+   
+</div>
+
+<div class="section" id="menuSection">
+    <!-- Aucune zone décorative ici, seulement les boutons qui apparaîtront dans la page floue -->
+</div>
+
+<div class="overlay" id="overlay" onclick="hidePage()"></div>
+<div class="modal" id="modal">
+    <!-- Contenu de la page floue -->
+</div>
+
+<script>
+    window.onscroll = function() { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").style.top = "0";
+        } else {
+            document.getElementById("navbar").style.top = "-50px";
+        }
+    }
+
+    function showPage(pageName) {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal').style.display = 'block';
+
+        // Vous pouvez personnaliser le contenu de la page floue ici en fonction de la section cliquée
+        if (pageName === 'Contact') {
+            document.getElementById('modal').innerHTML = `
+                <h1>Contact</h1>
+                <p>
+                    <div class="section" id="contactSection">
+                        <div class="decorative-zone">
+                            <!-- Zone décorative pour la section Contact -->
+                            <u><h2>Bienvenue dans notre section de contact. N'hésitez pas à nous joindre pour toute question ou commentaire.</h2></u>
+                            <p>Nos coordonnées :</p>
+                            <ul>
+                                <li>Adresse : </li>
+                                <li>Téléphone : </li>
+                                <li>Email : </li>
+                            </ul>
+                        </div>
+                    </div>
+					</div>
+
+</p>
+        `;
+    } else if (pageName === 'À propos de') {
+        document.getElementById('modal').innerHTML = `
+            <h1>À propos de</h1>
+            <p>
+<div class="section" id="aboutSection">
+    <div class="decorative-zone">
+        <!-- Zone décorative pour la section À propos de -->
+        <p>Contenu décoratif pour la section À propos de.</p>
+    </div>
+</div>
+</p>
+        `;
+    } else if (pageName === 'Menu') {
+        // Ajoutez ici vos zones de boutons pour la section "Menu"
+        document.getElementById('modal').innerHTML = `
+            <h1>Menu</h1>
+            <div class="menu-buttons">
+                <a href="https://flix-box-vf.netlify.app/index.html">Home</a>
+                <a href="https://flix-box-vf.netlify.app/Genre-Film%20Anime.html">Film Anime</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Disneyland.html">Film Disneyland</a>
+				
+				
+	
+            </div>
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/STUDIO%20DC%20COMICS-Film.html">Film DC Comics</a>
+                <a href="https://flix-box-vf.netlify.app/Film%20Marvel.html">Film Marvel</a>
+				<a href="https://flix-box-vf.netlify.app/Série%20Anime.html">Séries Animé</a>
+				
+                
+            </div>
+			
+			<br><br><br>
+            <div class="menu-buttons">
+				<a href="https://flix-box-vf.netlify.app/Science-Fiction.html">Science-Fiction</a>
+			    <a href="https://flix-box-vf.netlify.app/S%C3%A9ries.html">Séries</a>
+				<a href="https://flix-box-vf.netlify.app/Film%20Comédie.html">Film Comédie</a>
+
+               </div>
+			<br><br><br>
+            <div class="menu-buttons">
+			<a href="#">Séries D'horreurs</a>
+			<a href="https://flix-box-vf.netlify.app/Autres....html">Autres...</a>
+                
+            </div>
+        `;
+    }
+}
+   
+    function hidePage() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo</title>
+    <style>
+        body {
+            font-family: 'News times Roman', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .weather-container {
+            margin-top: 20px;
+        }
+
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .weather-animation {
+            width: 150px;
+            height: 150px;
+            margin-top: 10px;
+        }
+
+        .weather-description {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .temperature {
+            margin-top: 5px;
+            font-size: 1.5em;
+        }
+
+        .weather-details {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .date-container {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #3498db;
+        }
+
+        .clock-container {
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
+
+        .greeting-container {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #3498db;
+        }
+
+        @keyframes fallRain {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes fallSnow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes flashThunderstorm {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes rumbleThunderstorm {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
+        @keyframes blowWind {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        @keyframes floatClouds {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenu principal -->
+    <div id="content">
+        <h1>Prévisions Météo</h1>
+
+        <!-- Conteneur pour la météo -->
+        <div class="weather-container">
+            <div class="weather-info">
+                <div class="weather-animation" id="weatherAnimation"></div>
+                <div class="weather-description" id="weatherDescription"></div>
+                <div class="temperature" id="temperature"></div>
+            </div>
+
+            <!-- Détails météorologiques -->
+            <div class="weather-details" id="weatherDetails"></div>
+        </div>
+
+        <!-- Conteneur pour la date -->
+        <div class="date-container" id="dateContainer"></div>
+
+        <!-- Conteneur pour l'horloge -->
+        <div class="clock-container" id="clockContainer"></div>
+
+        <!-- Salutation en fonction de l'heure -->
+        <div class="greeting-container" id="greeting"></div>
+    </div>
+
+    <!-- Script JavaScript pour la météo et l'horloge -->
+    <script>
+        function updateWeather() {
+            const apiKey = 'b4331d24f50c9cc51f07a10f396b0ab3';
+            const city = 'Mantes-la-Jolie';
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherAnimation = document.getElementById("weatherAnimation");
+                    const weatherDescription = document.getElementById("weatherDescription");
+                    const temperature = document.getElementById("temperature");
+                    const weatherDetails = document.getElementById("weatherDetails");
+
+                    const iconCode = data.weather[0].icon;
+                    const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+                    weatherAnimation.style.backgroundImage = `url(${getWeatherAnimation(data.weather[0].main)})`;
+                    weatherDescription.innerText = data.weather[0].description;
+                    temperature.innerText = `${data.main.temp}°C`;
+
+                    weatherDetails.innerHTML = `
+                        <p>Humidité : ${data.main.humidity}%</p>
+                        <p>Pression : ${data.main.pressure} hPa</p>
+                        <p>Vitesse du vent : ${data.wind.speed} m/s</p>
+                    `;
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données météo', error));
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById("clockContainer").innerText = timeString;
+        }
+
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting = '';
+
+            if (hour >= 5 && hour < 12) {
+                greeting = 'Bonjour !';
+            } else if (hour >= 12 && hour < 18) {
+                greeting = 'Bonne après-midi !';
+            } else {
+                greeting = 'Bonne soirée !';
+            }
+
+            document.getElementById("greeting").innerText = greeting;
+        }
+
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('fr-FR', options);
+
+            document.getElementById("dateContainer").innerText = dateString;
+        }
+
+        function getWeatherAnimation(weatherCondition) {
+            switch (weatherCondition.toLowerCase()) {
+                case 'rain':
+                    return 'https://media.giphy.com/media/3oKIPbue8ke4eTrrmg/giphy.gif';
+                case 'snow':
+                    return 'https://media.giphy.com/media/dNtVx3kqwRcs4/giphy.gif';
+                case 'clear':
+                    return 'Images/soleil.gif';
+                case 'clouds':
+                    return 'Images/nuageux.gif';
+                case 'thunderstorm':
+                    return 'https://media.giphy.com/media/l4FGpLYrDmhj1cnMk/giphy.gif';
+                case 'wind':
+                    return 'https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif';
+                default:
+                    return ''; // Animation par défaut ou vide si aucune condition n'est remplie
+            }
+        }
+
+        window.onload = function() {
+            updateWeather();
+            updateClock();
+            updateGreeting();
+            updateDate();
+
+            // Mettez à jour la météo toutes les 10 minutes (600 000 millisecondes)
+            setInterval(updateWeather, 600000);
+
+            // Mettez à jour l'horloge toutes les secondes
+            setInterval(updateClock, 1000);
+
+            // Mettez à jour la date toutes les minutes
+            setInterval(updateDate, 60000);
+
+            // Mettez à jour la salutation toutes les heures
+            setInterval(updateGreeting, 3600000);
+        };
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Autres</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Votre contenu HTML -->
+</body>
+</html>
+
+
+
+
+

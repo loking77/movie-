@@ -1,0 +1,162 @@
+body {
+    background-color:brown; /* Violet clair en code hexadécimal */
+}
+
+
+.container {
+      width: 1000px; /* Vous pouvez ajuster la taille du carré selon vos besoins */
+      height: 130px;
+      background-color:#90EE90; /* Couleur de fond */
+      align-items: center;
+      justify-content: center;
+	  border:10px solid purple
+    }
+ 
+.image-cercle {
+  border-radius:; /* Cette propriété rendra l'image circulaire en utilisant un rayon de 50% */
+  width: 500px; /* Définissez la largeur souhaitée pour votre image circulaire */
+  height: 200px; /* Définissez la hauteur souhaitée pour votre image circulaire */
+  border: 2px solid red;
+  
+}
+
+
+.block {
+		width:100%px;
+		height:100%px;
+		margin:10%;
+		border:10px solid blue;
+		padding:15px;
+		border-radius: 50px;
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+/* Styles pour la barre de recherche */
+#searchForm {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    border: 2px solid #3498db; /* Bordure bleue */
+    border-radius: 5px; /* Coins arrondis */
+    outline: none; /* Supprime la bordure de focus */
+}
+
+#searchInput:focus {
+    border-color: #2ecc71; /* Changement de couleur de bordure lors du focus */
+}
+
+#searchInput::placeholder {
+    color: #95a5a6; /* Couleur du texte de l'espace réservé */
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+/* Styles pour le bouton de recherche */
+#searchForm input[type="submit"] {
+    padding: 10px;
+    background-color: #3498db; /* Couleur de fond bleue */
+    color: #fff; /* Couleur du texte blanc */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchForm input[type="submit"]:hover {
+    background-color: #2980b9; /* Changement de couleur au survol */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  margin: 0;
+}
+
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dashboard-item {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-item:hover {
+  background-color: #555;
+}
+
+.Autres{
+	text-shadow:8px 15px 3px red;
+	letter-spacing:2px;
+	word-spacing:3px;	
+}
+
+
+.card2{
+	width:600px;
+	padding:15px;
+	border:5px solid blue;
+}
+
+
+.ombre3{
+	text-shadow:8px 15px 5px white;
+	letter-spacing:2px;
+	word-spacing:3px;	
+}
+
+.cadre{
+	width:1100px;
+	padding:15px;
+	border:5px solid blue;
+}
+
+
+
+
+
+
+
+
+
+
+
